@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+.navbar-fixed {
+    position: fixed;
+    width: 100%;
+}
+
+.navbar {
+    background-color: $primary-color;
+    padding: 0 30px;
+    height: 95px;
+    position: relative;
+
+    a {
+        font-size: 17px;
+        font-weight: 500;
+        color: $text-color-primary;
+        text-decoration: none;
+
+        &:hover {
+            color: $text-color-secondary;
+        }
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+
+        li {
+            list-style: none;
+
+            &:not(:last-child) {
+                margin-right: 25px;
+            }
+        }
+    }
+}
+
+.navbrand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Satisfy', cursive;
+
+    a {
+        font-size: 40px;
+
+        &:hover {
+            color: $text-color-primary;
+        }
+    }
+
+}
+
+.nav-items {
+    i {
+        font-size: 25px;
+    }
+}
+
+.menu-btn {
+    display: none;
+
+    i {
+        font-size: 35px;
+    }
+}
+
+
+// sign button
+.navbar {
+    .sign-button {
+        border-radius: 10px;
+        background-color: transparent;
+        padding: 10px;
+        border: 1px solid #000f;
+        transition-duration: 0.4s;
+
+        &:hover {
+            background-color: $hover-color-link;
+        }
+    }
+
+    .sign-dropdown {
+        position: relative;
+
+        ul {
+            flex-direction: column;
+            align-items: flex-start;
+            position: absolute;
+            display: flex;
+            background-color: #ffff;
+            right: 0px;
+            width: 200px;
+            border: 1px solid black;
+
+
+            li {
+                width: 100%;
+                padding: 10px 5px;
+                border-bottom: 1px solid $hover-color-link;
+
+                &:hover:not(:first-child) {
+                    background-color: $hover-color-link;
+                }
+
+                a {
+                    width: 100%;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: $breakpoint-md) {
+    .navbar {
+        padding: 0 13px;
+
+        .sign-dropdown {
+            display: none;
+        }
+
+        .nav-items li:nth-child(2) {
+            margin: 0;
+        }
+    }
+
+    .navbrand {
+        a {
+            font-size: 26px;
+        }
+    }
+
+    .menu-btn {
+        display: block;
+
+        i {
+            font-size: 35px;
+        }
+    }
+
+    ul.nav-links {
+        display: none;
+    }
+}

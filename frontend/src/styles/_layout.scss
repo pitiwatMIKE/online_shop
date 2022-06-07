@@ -1,0 +1,17 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: '  ', sans-serif;
+}
+
+.wrap-content {
+    max-width: 100%;
+    padding: 0 30px;
+}
+
+@media only screen and (max-width: $breakpoint-md) {
+    .wrap-content {
+        padding: 0 18px;
+    }
+}

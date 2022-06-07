@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDetectClickOutside } from "react-detect-click-outside";
+import { motion } from "framer-motion";
 
 export default function SignButton({ closeSide }) {
   const [dropdown, setDropdown] = useState(false);
@@ -32,7 +33,7 @@ export default function SignButton({ closeSide }) {
             <i className="bi bi-person"></i>
           </Link>
           {dropdown && (
-            <ul>
+            <motion.ul animate={{ width: 200 }}>
               <li>Name: Pitiwat</li>
               <li>
                 <Link to="/about" onClick={closeDropdown}>
@@ -44,7 +45,7 @@ export default function SignButton({ closeSide }) {
                   SignOut
                 </Link>
               </li>
-            </ul>
+            </motion.ul>
           )}
         </div>
       )}

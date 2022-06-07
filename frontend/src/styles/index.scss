@@ -4,4 +4,23 @@
 @import "layout";
 
 // modules
-@import 'module'
+@import 'module';
+
+.box {
+    width: 10px;
+    height: 10px;
+    background-color: orchid;
+}
+
+.example-container div {
+    background: red;
+    border-radius: 30px;
+    width: calc(150px / 2);
+    height: calc(150px /2);
+}
+
+.test {
+    width: 200;
+    height: 200;
+    // x: 100;
+}

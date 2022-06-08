@@ -24,7 +24,7 @@ export default function SideNav({ sidenav, setSidenav }) {
           <Link to="/about" onClick={closeSide}>
             ABOUT
           </Link>
-          <SignButton closeSide={closeSide}/>
+          <SignButton closeSide={closeSide} />
         </div>
       </div>
     </>

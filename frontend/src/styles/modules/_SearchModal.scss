@@ -1,0 +1,25 @@
+.input-search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input,
+    button {
+        height: 40px;
+    }
+
+    input {
+        width: 350px;
+        min-width: 100px;
+        border: 1px solid;
+        padding: 0 20px;
+    }
+
+    button {
+        width: 50px;
+        border: 1px solid;
+        border-left: none;
+        background-color: transparent;
+    }
+}

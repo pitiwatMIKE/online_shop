@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import BasketModal from "./BasketModal";
+import SearchModal from "./SearchModal";
 import SignButton from "./SignButton";
 
 export default function Navbar({ sidenav, setSidenav }) {
+  const [searchModalShow, setSearcModalShow] = useState(false);
+  const [basketModalShow, setBasketModalShow] = useState(false);
+
   return (
     <>
       <div className="navbar-fixed">
@@ -34,12 +39,24 @@ export default function Navbar({ sidenav, setSidenav }) {
 
           <ul className="nav-items">
             <li>
-              <Link to="">
+              <Link
+                to=""
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSearcModalShow(true);
+                }}
+              >
                 <i className="bi bi-search"></i>
               </Link>
             </li>
             <li>
-              <Link to="">
+              <Link
+                to=""
+                onClick={(e) => {
+                  e.preventDefault();
+                  setBasketModalShow(true);
+                }}
+              >
                 <i className="bi bi-basket3"></i>
               </Link>
             </li>
@@ -48,6 +65,17 @@ export default function Navbar({ sidenav, setSidenav }) {
         </nav>
       </div>
       <div className="behind-navbar-fixed"></div>
+
+      {/* Search Modal */}
+      <SearchModal
+        show={searchModalShow}
+        onHide={() => setSearcModalShow(false)}
+      />
+      {/* Basket Modal */}
+      <BasketModal
+        show={basketModalShow}
+        onHide={() => setBasketModalShow(false)}
+      />
     </>
   );
 }

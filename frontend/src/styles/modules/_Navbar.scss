@@ -3,12 +3,17 @@
 .navbar-fixed {
     position: fixed;
     width: 100%;
+    z-index: 50;
+}
+
+.behind-navbar-fixed,
+.navbar {
+    height: 95px;
 }
 
 .navbar {
     background-color: $primary-color;
     padding: 0 30px;
-    height: 95px;
     position: relative;
 
     a {

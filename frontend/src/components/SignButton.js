@@ -12,13 +12,13 @@ export default function SignButton({ closeSide }) {
     }
   };
   const ref = useDetectClickOutside({ onTriggered: closeDropdown });
-  const isLogin = true;
+  const isLogin = false;
 
   return (
     <>
       {!isLogin ? (
-        <Link to="" className="sign-button">
-          SignIn
+        <Link to="/signin" className="sign-button">
+          Sign In
         </Link>
       ) : (
         <div className="sign-dropdown" ref={dropdown ? ref : null}>

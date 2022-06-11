@@ -24,7 +24,7 @@ export default function Shop() {
                 xl={4}
                 xxl={3}
               >
-                <CardProduct />
+                <CardProduct id={id} />
               </Col>
             ))}
           </Row>

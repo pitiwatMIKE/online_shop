@@ -14,11 +14,39 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init(
     {
+      email: {
+        type: DataTypes.STRING,
+        validate: {
+          isEmail: true,
+        },
+      },
+
+      password: {
+        type: DataTypes.STRING,
+        validate: {
+          isMoreThan(value) {
+            if (String(value).length < 6) {
+              throw new Error(
+                "The password must be at least 6 characters in length"
+              );
+            }
+          },
+        },
+      },
+
       firstName: DataTypes.STRING,
+
       lastName: DataTypes.STRING,
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
-      role: DataTypes.STRING,
+
+      role: {
+        type: DataTypes.STRING,
+        validate: {
+          isIn: {
+            args: [["user", "admin"]],
+            msg: "Role Must be user or admin",
+          },
+        },
+      },
     },
     {
       sequelize,

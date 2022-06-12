@@ -6,7 +6,8 @@
   "scripts": {
     "backend": "nodemon backend",
     "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "resetdb": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "author": "pitiwat promnimit",
   "license": "ISC",

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { Form, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login, selectorAuth } from "../reducers/users/authSlice";
+import Error from "../components/Error";
 
 const initialValues = {
   email: "",
@@ -19,13 +22,27 @@ const schema = yup.object().shape({
 
 export default function SignInPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {
+    loading,
+    error,
+    errMessage,
+    values: userAuth,
+  } = useSelector(selectorAuth);
   const handleClickSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    dispatch(login(values));
   };
+
+  useEffect(() => {
+    if (userAuth) {
+      navigate("/");
+    }
+  }, [navigate, userAuth]);
 
   return (
     <div className="form-wrap">
       <h2 className="text-center form-title">Welcome to Online Shop</h2>
+      {error && <Error msg={errMessage} />}
       <Formik
         validationSchema={schema}
         onSubmit={handleClickSubmit}
@@ -52,6 +69,7 @@ export default function SignInPage() {
               <Form.Group as={Col} md={12}>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
+                  autoComplete="off"
                   type="password"
                   name="password"
                   value={values.password}
@@ -65,7 +83,11 @@ export default function SignInPage() {
               </Form.Group>
             </Row>
             <div>
-              <button className="form-primary-btn" type="submit">
+              <button
+                className="form-primary-btn"
+                type="submit"
+                disabled={loading}
+              >
                 Sign In
               </button>
               <div className="text-center my-2">or</div>

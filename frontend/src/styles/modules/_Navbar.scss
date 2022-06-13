@@ -123,6 +123,10 @@
     .navbar {
         padding: 0 13px;
 
+        .sign-button{
+            display: none;
+        }
+
         .sign-dropdown {
             display: none;
         }

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectorAuth } from "../reducers/users/authSlice";
 
 export default function SignButton({ closeSide }) {
+  const [isLogin, setIsLogin] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const closeDropdown = () => {
     setDropdown(false);
@@ -11,13 +14,27 @@ export default function SignButton({ closeSide }) {
       closeSide();
     }
   };
+
   const ref = useDetectClickOutside({ onTriggered: closeDropdown });
-  const isLogin = false;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const signoutHandle = (e) => {
+    e.preventDefault();
+    closeDropdown();
+    dispatch(logout());
+    navigate("/signin");
+  };
+
+  const { values: authUser } = useSelector(selectorAuth);
+
+  useEffect(() => {
+    setIsLogin(authUser === null ? false : true);
+  }, [authUser]);
 
   return (
     <>
       {!isLogin ? (
-        <Link to="/signin" className="sign-button">
+        <Link to="/signin" className="sign-button" onClick={closeSide}>
           Sign In
         </Link>
       ) : (
@@ -34,14 +51,14 @@ export default function SignButton({ closeSide }) {
           </Link>
           {dropdown && (
             <motion.ul animate={{ width: 200 }}>
-              <li>Name: Pitiwat</li>
+              <li>{authUser.email}</li>
               <li>
                 <Link to="/about" onClick={closeDropdown}>
                   MyProfile
                 </Link>
               </li>
               <li>
-                <Link to="/" onClick={closeDropdown}>
+                <Link to="/" onClick={signoutHandle}>
                   SignOut
                 </Link>
               </li>

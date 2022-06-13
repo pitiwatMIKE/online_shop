@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+var morgan = require("morgan");
 const { notFound, errorHandle } = require("./middlewares/errorMiddleWare");
 const userRouter = require("./routes/userRouter");
 
 require("dotenv").config();
+app.use(morgan("tiny"));
 app.use(express.json());
 
 // route

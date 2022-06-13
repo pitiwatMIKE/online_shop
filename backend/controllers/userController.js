@@ -15,7 +15,7 @@ const login = asyncHandler(async (req, res) => {
     if (await user.comparePassword(password)) {
       res.json({
         id: user.id,
-        user: user.email,
+        email: user.email,
         role: user.role,
         token: generateToken(user.id),
       });
@@ -40,7 +40,7 @@ const register = asyncHandler(async (req, res) => {
 
     res.json({
       id: user.id,
-      name: user.email,
+      email: user.email,
       role: user.role,
       token: generateToken(user.id),
     });

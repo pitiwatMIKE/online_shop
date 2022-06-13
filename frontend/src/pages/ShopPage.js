@@ -9,19 +9,22 @@ import {
 } from "../reducers/products/productSlice";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
+import { useParams } from "react-router-dom";
+import Paginate from "../components/Paginate";
 
 export default function Shop() {
+  const { page, search } = useParams();
   const dispatch = useDispatch();
   const {
     loading,
     error,
     errMessage,
-    values: products,
+    values: { products, maxPage },
   } = useSelector(selectorProduct);
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    dispatch(getProducts({ page, search }));
+  }, [dispatch, page, search]);
 
   return (
     <>
@@ -52,6 +55,9 @@ export default function Shop() {
                   </Col>
                 ))}
             </Row>
+          </div>
+          <div className="my-5" style={{display: 'flex', justifyContent: 'center'}}>
+            <Paginate count={2} page={page} search={search} maxPage={maxPage} />
           </div>
         </LayoutContent>
       )}

@@ -30,15 +30,21 @@ const productSlice = createSlice({
 
 const { loading, error, success } = productSlice.actions;
 
-export const getProducts = () => async (dispatch) => {
-  dispatch(loading());
-  try {
-    const response = await axios.get("/api/products");
-    dispatch(success(response.data));
-  } catch (e) {
-    dispatch(error(e.response.data.message));
-  }
-};
+export const getProducts =
+  ({ page, search }) =>
+  async (dispatch) => {
+    dispatch(loading());
+    try {
+      const currentPage = page ? `page=${page}` : "";
+      const keyword = search ? `search=${search}` : "";
+      const response = await axios.get(
+        `/api/products?${currentPage}&${keyword}`
+      );
+      dispatch(success(response.data));
+    } catch (e) {
+      dispatch(error(e.response.data.message));
+    }
+  };
 
 export const getProduct = (id) => async (dispatch) => {
   dispatch(loading());

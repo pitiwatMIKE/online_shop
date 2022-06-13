@@ -1,12 +1,31 @@
 const asyncHandler = require("express-async-handler");
+const { Op } = require("sequelize");
 const { Product } = require("../db/models");
 
 // @desc    get all products
 // @route   /api/products
 // @access  public
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.findAll();
-  res.json(products);
+  let pageSize = 4;
+  let page = req.query.page || 1;
+  let keyword = req.query.search || null;
+  let condition = keyword ? { name: { [Op.substring]: keyword } } : {};
+
+  let { rows, count } = await Product.findAndCountAll({
+    order: [["updatedAt", "DESC"]],
+    where: condition,
+    offset: pageSize * (page - 1),
+    limit: pageSize,
+  });
+
+  count = Math.ceil(count / pageSize);
+
+  if (rows) {
+    res.json({ products: rows, maxPage: count });
+  } else {
+    res.status(404);
+    throw new Error("Products not found");
+  }
 });
 
 // @desc    get prouduct id

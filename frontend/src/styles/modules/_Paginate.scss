@@ -1,0 +1,34 @@
+.pagination {
+    .page-link {
+        padding: 10px 19px;
+        margin: 0 20px;
+        border-radius: 50%;
+        color: #000f
+    }
+
+    .page-item.active {
+        .page-link {
+            color: #ffff;
+            background-color: black;
+            border: 1px solid #000f;
+        }
+    }
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+    .pagination {
+        .page-link {
+            margin: 0 9px;
+            padding: 6px 14px;
+        }
+    }
+}
+
+@media only screen and (max-width: $breakpoint-xs) {
+    .pagination {
+        .page-link {
+            margin: 0 5px;
+            padding: 5px 14px;
+        }
+    }
+}

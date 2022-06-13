@@ -12,10 +12,6 @@ app.use(express.json());
 // route
 app.use("/api/users", userRouter);
 
-//Error handle
-app.use(notFound);
-app.use(errorHandle);
-
 // static
 app.use("/static", express.static(path.join(__dirname, "public")));
 
@@ -29,6 +25,9 @@ if (process.env.NODE_ENV === "production") {
     res.send("server is runing ...");
   });
 }
+//Error handle
+app.use(notFound);
+app.use(errorHandle);
 
 const ENV = process.env.NODE_ENV;
 const PORT = process.env.PORT || 5000;

@@ -4,9 +4,11 @@ import {
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
 import authReducer from "./reducers/users/authSlice";
+import productReducer from "./reducers/products/productSlice";
 
 const combinedReducer = combineReducers({
   auth: authReducer,
+  product: productReducer,
 });
 
 const rootReducer = (state, action) => {

@@ -4,6 +4,7 @@ const path = require("path");
 var morgan = require("morgan");
 const { notFound, errorHandle } = require("./middlewares/errorMiddleWare");
 const userRouter = require("./routes/userRouter");
+const productRouter = require("./routes/productRouter");
 
 require("dotenv").config();
 app.use(morgan("tiny"));
@@ -11,6 +12,7 @@ app.use(express.json());
 
 // route
 app.use("/api/users", userRouter);
+app.use("/api/products", productRouter);
 
 // static
 app.use("/static", express.static(path.join(__dirname, "public")));

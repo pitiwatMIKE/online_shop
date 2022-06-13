@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import CardProduct from "../components/CardProduct";
 import Carousels from "../components/Carousels";
 import LayoutContent from "../components/LayoutContent";
+import {
+  getProductLatest,
+  selectorProduct,
+} from "../reducers/products/productSlice";
 
 export default function HomePage() {
+  const dispatch = useDispatch();
+  const { values: products } = useSelector(selectorProduct);
+
+  useEffect(() => {
+    dispatch(getProductLatest(4));
+  }, [dispatch]);
+
   return (
     <>
       <Carousels />
@@ -14,20 +26,21 @@ export default function HomePage() {
           <div className="border-buttom-short mb-4"></div>
 
           <Row>
-            {[...Array(8)].map((item, id) => (
-              <Col
-                className="my-4"
-                key={id}
-                xs={6}
-                sm={6}
-                md={6}
-                lg={6}
-                xl={4}
-                xxl={3}
-              >
-                <CardProduct id={id} />
-              </Col>
-            ))}
+            {Array.isArray(products) &&
+              products.map((item) => (
+                <Col
+                  className="my-4"
+                  key={item.id}
+                  xs={6}
+                  sm={6}
+                  md={6}
+                  lg={6}
+                  xl={4}
+                  xxl={3}
+                >
+                  <CardProduct id={item.id} product={item} />
+                </Col>
+              ))}
           </Row>
         </div>
       </LayoutContent>

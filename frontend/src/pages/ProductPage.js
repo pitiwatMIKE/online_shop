@@ -1,26 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Error from "../components/Error";
+import Loading from "../components/Loading";
+import { getProduct, selectorProduct } from "../reducers/products/productSlice";
 
 export default function ProductPage() {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const {
+    loading,
+    error,
+    errMessage,
+    values: product,
+  } = useSelector(selectorProduct);
+  useEffect(() => {
+    dispatch(getProduct(id));
+  }, [dispatch, id]);
+
   return (
     <>
-
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <Error msg={errMessage} />
+      ) : product ? (
         <div className="product-container">
           <div className="show-product">
-            <img
-              src={process.env.PUBLIC_URL + "/test_product.jpg"}
-              alt="product_image"
-            />
+            <img src={product.imageUrl} alt="product_image" />
           </div>
           <div className="product-detail">
-            <h3>PRODUCT NAME {id}</h3>
-            <div className="product-price">100 ฿</div>
-            <p className="product-description">
-              Sed cum necessitatibus ad. Sunt architecto ad repellendus nihil
-              unde dicta sit expedita. Velit rerum dolore incidunt debitis
-              sapiente laborum expedita porro odit.
-            </p>
+            <h3>{product.name}</h3>
+            <div className="product-price">{product.price} ฿</div>
+            <p className="product-description">{product.desc}</p>
             <div className="add-product">
               <div>
                 <input type="number" min="1" max="99" />
@@ -34,7 +46,7 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
-
+      ) : null}
     </>
   );
 }

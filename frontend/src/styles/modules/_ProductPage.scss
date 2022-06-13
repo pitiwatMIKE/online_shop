@@ -13,6 +13,8 @@
 
     img {
         width: 500px;
+        object-fit: cover;
+        object-position: center;
     }
 }
 
@@ -62,4 +64,40 @@
         }
     }
 
+}
+
+@media only screen and (max-width: $breakpoint-xl) {
+    .product-container {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+        .show-product {
+            width: 100%;
+        }
+
+        .product-detail {
+            width: 100%;
+            height: 500px;
+            padding: 60px;
+        }
+    }
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+    .product-container {
+        .show-product {
+            img {
+                width: 100%;
+            }
+        }
+
+        .product-detail {
+            padding: 20px
+        }
+
+        .add-product {
+            font-size: 12px;
+        }
+    }
 }

@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 const { Product } = require("../db/models");
 
 // @desc    get all products
-// @route   /api/products
+// @route   GET /api/products
 // @access  public
 const getProducts = asyncHandler(async (req, res) => {
   let pageSize = 4;
@@ -29,7 +29,7 @@ const getProducts = asyncHandler(async (req, res) => {
 });
 
 // @desc    get prouduct id
-// @route   /api/product/:id
+// @route   GET /api/product/:id
 // @access  public
 const getProduct = asyncHandler(async (req, res) => {
   const product = await Product.findByPk(req.params.id);
@@ -37,7 +37,7 @@ const getProduct = asyncHandler(async (req, res) => {
 });
 
 // @desc    get prouduct latest
-// @route   /api/product/latest?amount=
+// @route   GET /api/product/latest?amount=
 // @access  public
 const getProductLatest = asyncHandler(async (req, res) => {
   const products = await Product.findAll({

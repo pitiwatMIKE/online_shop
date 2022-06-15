@@ -1,16 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const { USER } = require("../constants/roleConstant");
+const { USER, ADMIN } = require("../constants/roleConstant");
 const { protect, permit } = require("../middlewares/authMiddleware");
 
 const {
   register,
-  updateUser,
   login,
+  getMyAccount,
+  updateMyAccount,
 } = require("../controllers/userController");
 
 router.route("/login").post(login);
 router.route("/register").post(register);
-router.route("/:id/update").put(protect, permit(USER), updateUser);
+router.route("/my_account").get(protect, permit(USER, ADMIN), getMyAccount);
+router
+  .route("/my_account/update")
+  .put(protect, permit(USER, ADMIN), updateMyAccount);
 
 module.exports = router;

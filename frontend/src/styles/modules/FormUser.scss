@@ -1,0 +1,41 @@
+.form-user-container {
+    margin: 20px auto;
+    width: 900px;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    .form-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        i {
+
+            font-size: 30px;
+            cursor: pointer;
+
+            &:hover {
+                color: #ab9f9f;
+            }
+        }
+
+    }
+
+    .row>div {
+        margin: 14px 0;
+    }
+}
+
+.btn-update-form,
+.btn-cancel-form {
+    background-color: transparent;
+    padding: 10px 20px;
+    border: 1px solid #000f;
+}
+
+.btn-update-form {
+    background-color: #000f;
+    color: #ffff;
+    margin: 10px;
+}

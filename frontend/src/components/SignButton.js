@@ -53,8 +53,8 @@ export default function SignButton({ closeSide }) {
             <motion.ul animate={{ width: 200 }}>
               <li>{authUser.email}</li>
               <li>
-                <Link to="/about" onClick={closeDropdown}>
-                  MyProfile
+                <Link to="/personal" onClick={closeDropdown}>
+                  Personal
                 </Link>
               </li>
               <li>

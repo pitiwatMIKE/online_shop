@@ -51,5 +51,30 @@ export const login = (data) => async (dispatch) => {
   }
 };
 
+export const register = (data, navigate) => async (dispatch) => {
+  dispatch(loading());
+
+  try {
+    const response = await axios.post(`/api/users/register`, data);
+    localStorage.setItem("userAuth", JSON.stringify(response.data));
+    dispatch(success(JSON.parse(localStorage.getItem("userAuth"))));
+    navigate("/");
+  } catch (e) {
+    dispatch(error(e.reponse.data.message));
+  }
+};
+
+export const notLogin = (cbNavigate) => (dispatch) => {
+  let userAuth = JSON.parse(localStorage.getItem("userAuth"));
+  if (!userAuth) {
+    try {
+      throw new Error("Error not Login");
+    } catch (e) {
+      dispatch(logout());
+      cbNavigate();
+    }
+  }
+};
+
 export const selectorAuth = (state) => state.auth;
 export default authSlice.reducer;

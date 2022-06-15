@@ -8,6 +8,7 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import ProductPage from "./pages/ProductPage";
 import ScrollToTop from "./components/ScrollToTop";
+import PersonalPage from "./pages/PersonalPage";
 
 export default function App() {
   return (
@@ -25,7 +26,8 @@ export default function App() {
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/signin" element={<SignInPage />} />
-          <Route path="signup" element={<SignUpPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/personal" element={<PersonalPage />} />
         </Routes>
       </LayoutContainer>
     </>

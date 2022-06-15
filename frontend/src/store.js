@@ -5,10 +5,12 @@ import {
 } from "@reduxjs/toolkit";
 import authReducer from "./reducers/users/authSlice";
 import productReducer from "./reducers/products/productSlice";
+import myAccountReducer from "./reducers/users/myAccountSlice";
 
 const combinedReducer = combineReducers({
-  auth: authReducer,
+  myAccount: myAccountReducer,
   product: productReducer,
+  auth: authReducer,
 });
 
 const rootReducer = (state, action) => {

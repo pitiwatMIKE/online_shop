@@ -54,15 +54,14 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "User",
       hooks: {
         beforeSave: async (user) => {
-          if (user.password) {
+          const getUser = await User.findByPk(user.id);
+          if (user.password === getUser.password) {
+            // when update with password === ""
+            user.password = getUser.password;
+          } else {
             let salt = await bcrypt.genSaltSync(10);
             let hash = await bcrypt.hashSync(user.password, salt);
             user.password = hash;
-          }
-          if (user.password === "") {
-            // when update user with password = empty
-            const getUser = await User.findByPk(user.id);
-            user.password = getUser.password;
           }
         },
       },

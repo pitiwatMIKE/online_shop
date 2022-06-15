@@ -3,6 +3,8 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { Form, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { register } from "../reducers/users/authSlice";
 
 const initialValues = {
   firstName: "",
@@ -12,7 +14,7 @@ const initialValues = {
 };
 
 const schema = yup.object().shape({
-  firstName: yup.string().required('first name is a required'),
+  firstName: yup.string().required("first name is a required"),
   lastName: yup.string().required("last name is a required"),
   email: yup.string().email().required(),
   password: yup
@@ -23,8 +25,10 @@ const schema = yup.object().shape({
 
 export default function SignUpPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleClickSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    // alert(JSON.stringify(values, null, 2));
+    dispatch(register(values, navigate));
   };
 
   return (

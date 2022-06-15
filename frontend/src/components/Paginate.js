@@ -25,7 +25,6 @@ const Paginate = ({ page, maxPage, search, count }) => {
       ? `${pathname}page/${page}`
       : `${pathname}/page/${page}`;
 
-    console.log(navigatePath);
     navigate(navigatePath);
   };
 

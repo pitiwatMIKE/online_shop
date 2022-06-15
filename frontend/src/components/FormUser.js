@@ -45,7 +45,6 @@ export default function FormUser() {
   };
 
   const handleClickSubmit = (values) => {
-    setValidated(true);
     dispatch(updateMyAccount(values, () => HandleCancel(values)));
   };
 
@@ -68,7 +67,9 @@ export default function FormUser() {
                 {/* icon edit */}
                 {isdisabled ? (
                   <i
-                    onClick={() => setIsDisabled(false)}
+                    onClick={() => {
+                      setIsDisabled(false);
+                    }}
                     className="bi bi-pencil-square"
                   ></i>
                 ) : null}
@@ -160,7 +161,13 @@ export default function FormUser() {
                 {/* Button */}
                 {isdisabled || (
                   <div>
-                    <button type="submit" className="btn-update-form">
+                    <button
+                      type="submit"
+                      className="btn-update-form"
+                      onClick={() => {
+                        setValidated(true);
+                      }}
+                    >
                       Update
                     </button>
                     <button

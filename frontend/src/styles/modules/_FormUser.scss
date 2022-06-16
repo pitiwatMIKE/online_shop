@@ -27,15 +27,21 @@
     }
 }
 
-.btn-update-form,
-.btn-cancel-form {
-    background-color: transparent;
-    padding: 10px 20px;
-    border: 1px solid #000f;
+
+@media only screen and (max-width: $breakpoint-md) {
+    .form-user-container {
+        width: 730px;
+        padding: 20px;
+        margin: 10px auto;
+        box-sizing: border-box;
+    }
 }
 
-.btn-update-form {
-    background-color: #000f;
-    color: #ffff;
-    margin: 10px;
+@media only screen and (max-width: $breakpoint-sm) {
+    .form-user-container {
+        width: 330px;
+        box-shadow: none;
+        padding: 0;
+        margin: 30px auto;
+    }
 }

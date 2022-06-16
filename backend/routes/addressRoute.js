@@ -1,7 +1,10 @@
 const express = require("express");
-const { create } = require("../controllers/addressControler");
+const { ADMIN, USER } = require("../constants/roleConstant");
+const { create, getAddress } = require("../controllers/addressControler");
+const { protect, permit } = require("../middlewares/authMiddleware");
 const router = express.Router();
 
-router.route("/").post(create);
+router.route("/").get(protect, permit(USER, ADMIN), getAddress);
+router.route("/").post(protect, permit(USER, ADMIN), create);
 
 module.exports = router;

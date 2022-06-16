@@ -6,8 +6,10 @@ import {
 import authReducer from "./reducers/users/authSlice";
 import productReducer from "./reducers/products/productSlice";
 import myAccountReducer from "./reducers/users/myAccountSlice";
+import addressReducer from "./reducers/users/addressSlice";
 
 const combinedReducer = combineReducers({
+  address: addressReducer,
   myAccount: myAccountReducer,
   product: productReducer,
   auth: authReducer,

@@ -15,7 +15,6 @@ export default function CardProduct({ id, product }) {
           className="select-option"
           onClick={() => {
             clickSelectOp = true;
-            navigate(`/about`);
           }}
         >
           SELECT OPTION

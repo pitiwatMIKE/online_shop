@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import BasketModal from "./BasketModal";
+import CartModal from "./CartModal";
 import SearchModal from "./SearchModal";
 import SignButton from "./SignButton";
 
 export default function Navbar({ sidenav, setSidenav }) {
   const [searchModalShow, setSearcModalShow] = useState(false);
-  const [basketModalShow, setBasketModalShow] = useState(false);
+  const [cartModalShow, cartModalModalShow] = useState(false);
 
   return (
     <>
@@ -54,7 +54,7 @@ export default function Navbar({ sidenav, setSidenav }) {
                 to=""
                 onClick={(e) => {
                   e.preventDefault();
-                  setBasketModalShow(true);
+                  cartModalModalShow(true);
                 }}
               >
                 <i className="bi bi-basket3"></i>
@@ -71,10 +71,10 @@ export default function Navbar({ sidenav, setSidenav }) {
         show={searchModalShow}
         onHide={() => setSearcModalShow(false)}
       />
-      {/* Basket Modal */}
-      <BasketModal
-        show={basketModalShow}
-        onHide={() => setBasketModalShow(false)}
+      {/* Cart Modal */}
+      <CartModal
+        show={cartModalShow}
+        onHide={() => cartModalModalShow(false)}
       />
     </>
   );

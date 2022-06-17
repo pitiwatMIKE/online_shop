@@ -5,7 +5,6 @@ const { Address } = require("../db/models");
 // @route GET /api/addrss
 // @access protected
 const getAddress = asyncHandler(async (req, res) => {
-  console.log(req.user.id);
   const userAddress = await Address.findOne({
     where: { userId: req.user.id },
     attributes: { exclude: ["id", "createdAt", "updatedAt", "userId"] },

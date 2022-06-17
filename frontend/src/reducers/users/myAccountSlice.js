@@ -70,7 +70,7 @@ export const updateMyAccount = (data, cb) => async (dispatch) => {
     dispatch(success(response.data));
     cb();
   } catch (e) {
-    console.log(e);
+    console.log(e.response.data.message);
     e.response.status === 401
       ? dispatch(logout())
       : dispatch(error(e.response.data.message));

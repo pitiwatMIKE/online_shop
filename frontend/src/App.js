@@ -9,6 +9,7 @@ import SignUpPage from "./pages/SignUpPage";
 import ProductPage from "./pages/ProductPage";
 import ScrollToTop from "./components/ScrollToTop";
 import PersonalPage from "./pages/PersonalPage";
+import CheckOutPage from "./pages/CheckOutPage";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/personal" element={<PersonalPage />} />
+          <Route path="/checkout" element={<CheckOutPage />} />
         </Routes>
       </LayoutContainer>
     </>

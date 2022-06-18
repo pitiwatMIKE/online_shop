@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   changeQty,
   deleteCard,
@@ -11,6 +12,7 @@ import {
 export default function CartModal(props) {
   const { onHide } = props;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { values: cart, total } = useSelector(selectorCart);
 
   useEffect(() => {
@@ -83,7 +85,15 @@ export default function CartModal(props) {
                 <button className="btn-cancel" onClick={onHide}>
                   CONTINUE SHOPPING
                 </button>
-                <button className="btn-check-out">CHECK OUT</button>
+                <button
+                  className="btn-check-out"
+                  onClick={() => {
+                    onHide();
+                    navigate(`/checkout`);
+                  }}
+                >
+                  CHECK OUT
+                </button>
               </div>
             )}
           </div>

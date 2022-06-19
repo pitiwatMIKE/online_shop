@@ -1,18 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import CartModal from "../components/CartModal";
 import FormAddress from "../components/FormAddress";
 import { getCard, selectorCart } from "../reducers/products/cartSlice";
+import { selectorAddress } from "../reducers/users/addressSlice";
+import { logout, selectorAuth } from "../reducers/users/authSlice";
 
 export default function CheckOutPage() {
-  const [cartModalShow, setCartModalModalShow] = useState(false);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [notAddress, setNotAddress] = useState(false);
+  const [cartModalShow, setCartModalModalShow] = useState(false);
   const { values: cart, total } = useSelector(selectorCart);
+  const { values: userAuth } = useSelector(selectorAuth);
+  const { values: userAddress } = useSelector(selectorAddress);
 
   useEffect(() => {
     dispatch(getCard());
-  }, [dispatch]);
+    if (!cart.length) {
+      navigate("/shop");
+    } else if (!userAuth) {
+      dispatch(logout());
+      navigate("/signin", { state: { from: "/checkout" } });
+    }
+  }, [dispatch, navigate, userAuth, cart.length]);
+
+  const placeOrderHandle = () => {
+    setNotAddress(false);
+    if (!userAddress) {
+      setNotAddress(true);
+    }
+  };
 
   return (
     <div className="checkout-container">
@@ -102,12 +121,14 @@ export default function CheckOutPage() {
           </div>
           <hr />
 
+          {notAddress && (
+            <div className="payment-alert">- Required Shipping Address</div>
+          )}
+
           <div className="btn-payment">
-            <button> PLACE ORDER</button>
+            <button onClick={placeOrderHandle}> PLACE ORDER</button>
           </div>
         </div>
-
-        <div className="payment-bottom"></div>
       </div>
 
       <CartModal

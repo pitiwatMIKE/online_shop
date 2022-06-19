@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { Form, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectorAuth } from "../reducers/users/authSlice";
 import Error from "../components/Error";
@@ -21,6 +21,7 @@ const schema = yup.object().shape({
 });
 
 export default function SignInPage() {
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
@@ -34,10 +35,11 @@ export default function SignInPage() {
   };
 
   useEffect(() => {
+    const from = location.state?.from || "/";
     if (userAuth) {
-      navigate("/");
+      navigate(from);
     }
-  }, [navigate, userAuth]);
+  }, [navigate, location, userAuth, loading]);
 
   return (
     <div className="form-wrap">

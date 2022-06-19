@@ -19,7 +19,12 @@ const combinedReducer = combineReducers({
 
 const rootReducer = (state, action) => {
   if (action.type === "auth/logout") {
-    state = undefined;
+    // Excluding Reducers From Being Reset
+    let { cart } = state;
+    state = { cart };
+
+    // reset all
+    // state = undefined
   }
   return combinedReducer(state, action);
 };

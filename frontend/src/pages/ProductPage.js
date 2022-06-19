@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CartModal from "../components/CartModal";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
-import { setCart } from "../reducers/products/cartSlice";
+import { buyNow, setCart } from "../reducers/products/cartSlice";
 import { getProduct, selectorProduct } from "../reducers/products/productSlice";
 
 export default function ProductPage() {
   const [cartModalShow, setCartModalModalShow] = useState(false);
   const [qty, setQty] = useState(1);
   const { id } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
     loading,
@@ -67,7 +68,14 @@ export default function ProductPage() {
                   </button>
                 </div>
                 <div className="buy-now">
-                  <button>Buy Now</button>
+                  <button
+                    onClick={() => {
+                      dispatch(buyNow([{ ...product, qty: 1 }]));
+                      navigate("/checkout");
+                    }}
+                  >
+                    Buy Now
+                  </button>
                 </div>
               </div>
             </div>

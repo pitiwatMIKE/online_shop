@@ -4,7 +4,7 @@ import axios from "axios";
 const initialState = {
   loading: false,
   error: false,
-  values: null,
+  values: JSON.parse(localStorage.getItem("userAuth")) || null,
   errMessage: null,
 };
 
@@ -25,9 +25,6 @@ const authSlice = createSlice({
         errMessage: action.payload,
       };
     },
-    setAuthWhenRefresh: (state, action) => {
-      return { ...initialState, values: action.payload };
-    },
     logout: (state) => {
       localStorage.removeItem("userAuth");
       return { ...initialState };
@@ -36,7 +33,7 @@ const authSlice = createSlice({
 });
 
 const { loading, error, success } = authSlice.actions;
-export const { logout, setAuthWhenRefresh } = authSlice.actions;
+export const { logout } = authSlice.actions;
 
 export const login = (data) => async (dispatch) => {
   localStorage.removeItem("userAuth");

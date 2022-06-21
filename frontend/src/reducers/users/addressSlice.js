@@ -32,8 +32,8 @@ const addressSlice = createSlice({
 
 const { loading, error, success } = addressSlice.actions;
 
-export const getAddress = () => async (dispatch) => {
-  const userAuth = JSON.parse(localStorage.getItem("userAuth"));
+export const getAddress = () => async (dispatch, getState) => {
+  const userAuth = getState().auth.values;
   const config = {
     headers: {
       Authorization: "Bearer " + userAuth?.token,

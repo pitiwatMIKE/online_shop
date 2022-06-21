@@ -6,6 +6,7 @@ const { notFound, errorHandle } = require("./middlewares/errorMiddleWare");
 const userRouter = require("./routes/userRouter");
 const productRouter = require("./routes/productRouter");
 const addressRouter = require("./routes/addressRoute");
+const orderRouter = require("./routes/orderRouter");
 require("dotenv").config();
 app.use(morgan("tiny"));
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/address", addressRouter);
+app.use("/api/orders", orderRouter);
 
 // static
 app.use("/static", express.static(path.join(__dirname, "public")));

@@ -65,8 +65,7 @@ export default function FormAddress() {
   };
 
   useEffect(() => {
-    // dispatch(getMyAccount());
-    dispatch(getAddress());
+      dispatch(getAddress());
   }, [dispatch]);
 
   return (

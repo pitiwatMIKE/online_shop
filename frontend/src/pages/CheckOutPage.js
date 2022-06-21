@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartModal from "../components/CartModal";
 import FormAddress from "../components/FormAddress";
+import Payment from "../components/Payment";
 import { getCard, selectorCart } from "../reducers/products/cartSlice";
 import { selectorAddress } from "../reducers/users/addressSlice";
 import { logout, selectorAuth } from "../reducers/users/authSlice";
@@ -12,6 +13,7 @@ export default function CheckOutPage() {
   const dispatch = useDispatch();
   const [notAddress, setNotAddress] = useState(false);
   const [cartModalShow, setCartModalModalShow] = useState(false);
+  const [paymentFailed, setPaymentFailed] = useState(false);
   const { values: cart, total } = useSelector(selectorCart);
   const { values: userAuth } = useSelector(selectorAuth);
   const { values: userAddress } = useSelector(selectorAddress);
@@ -30,6 +32,9 @@ export default function CheckOutPage() {
     setNotAddress(false);
     if (!userAddress) {
       setNotAddress(true);
+      return true;
+    } else {
+      return false;
     }
   };
 
@@ -79,7 +84,7 @@ export default function CheckOutPage() {
                   <div className="price">฿ {product.price}</div>
                   <div className="qty">{product.qty}</div>
                   <div className="total-price">
-                    ฿ {Number(product.qty) * Number(product.price)}
+                    ฿ {(Number(product.qty) * Number(product.price)).toFixed(2)}
                   </div>
                 </div>
               ))}
@@ -117,16 +122,24 @@ export default function CheckOutPage() {
 
           <div className="total">
             <div>Total</div>
-            <div>฿ {Number(total) + 50}</div>
+            <div>฿ {(Number(total) + 50).toFixed(2)}</div>
           </div>
           <hr />
 
-          {notAddress && (
-            <div className="payment-alert">- Required Shipping Address</div>
-          )}
+          <div className="payment-alert">
+            {notAddress && <div>- Required Shipping Address</div>}
+            {paymentFailed && <div>- Payment failed, Please try again.</div>}
+          </div>
 
           <div className="btn-payment">
-            <button onClick={placeOrderHandle}> PLACE ORDER</button>
+            <Payment
+              placeOrderHandle={placeOrderHandle}
+              setPaymentFailed={setPaymentFailed}
+              cart={cart}
+              subTotal={total}
+              shippingPrice={50}
+              total={Number(total) + 50}
+            />
           </div>
         </div>
       </div>

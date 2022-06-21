@@ -11,7 +11,8 @@ const calTotal = () => {
   cart.forEach((product) => {
     result += Number(product.qty) * Number(product.price);
   });
-  return result;
+
+  return result.toFixed(2);
 };
 
 const cartSlice = createSlice({
@@ -56,10 +57,14 @@ const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state.values));
       state.total = calTotal();
     },
+    clearCart: (state) => {
+      localStorage.removeItem("cart");
+      return { ...initialState, values: [] };
+    },
   },
 });
 
-export const { getCard, setCart, deleteCard, changeQty, buyNow } =
+export const { getCard, setCart, deleteCard, changeQty, buyNow, clearCart } =
   cartSlice.actions;
 export const selectorCart = (state) => state.cart;
 export default cartSlice.reducer;

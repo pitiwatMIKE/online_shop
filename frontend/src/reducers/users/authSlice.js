@@ -27,7 +27,7 @@ const authSlice = createSlice({
     },
     logout: (state) => {
       localStorage.removeItem("userAuth");
-      return { ...initialState };
+      return { ...initialState, values: null };
     },
   },
 });
@@ -58,18 +58,6 @@ export const register = (data, navigate) => async (dispatch) => {
     navigate("/");
   } catch (e) {
     dispatch(error(e.reponse.data.message));
-  }
-};
-
-export const notLogin = (cbNavigate) => (dispatch) => {
-  let userAuth = JSON.parse(localStorage.getItem("userAuth"));
-  if (!userAuth) {
-    try {
-      throw new Error("Error not Login");
-    } catch (e) {
-      dispatch(logout());
-      cbNavigate();
-    }
   }
 };
 

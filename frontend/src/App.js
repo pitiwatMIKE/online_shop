@@ -10,6 +10,7 @@ import ProductPage from "./pages/ProductPage";
 import ScrollToTop from "./components/ScrollToTop";
 import PersonalPage from "./pages/PersonalPage";
 import CheckOutPage from "./pages/CheckOutPage";
+import MyOrderPage from "./pages/MyOrderPage";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/personal" element={<PersonalPage />} />
           <Route path="/checkout" element={<CheckOutPage />} />
+          <Route path="/myorder" element={<MyOrderPage />} />
         </Routes>
       </LayoutContainer>
     </>

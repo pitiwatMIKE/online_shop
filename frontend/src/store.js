@@ -10,11 +10,11 @@ import addressReducer from "./reducers/users/addressSlice";
 import cartReducer from "./reducers/products/cartSlice";
 
 const combinedReducer = combineReducers({
-  cart: cartReducer,
-  address: addressReducer,
-  myAccount: myAccountReducer,
-  product: productReducer,
   auth: authReducer,
+  product: productReducer,
+  myAccount: myAccountReducer,
+  address: addressReducer,
+  cart: cartReducer,
 });
 
 const rootReducer = (state, action) => {

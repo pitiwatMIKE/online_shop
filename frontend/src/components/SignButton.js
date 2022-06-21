@@ -23,13 +23,19 @@ export default function SignButton({ closeSide }) {
     closeDropdown();
     dispatch(logout());
     navigate("/signin");
+    setIsLogin(false);
   };
 
-  const { values: authUser } = useSelector(selectorAuth);
+  const { values: userAuth } = useSelector(selectorAuth);
 
   useEffect(() => {
-    setIsLogin(authUser === null ? false : true);
-  }, [authUser]);
+    if (userAuth) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+      dispatch(logout());
+    }
+  }, [dispatch, userAuth]);
 
   return (
     <>
@@ -51,7 +57,7 @@ export default function SignButton({ closeSide }) {
           </Link>
           {dropdown && (
             <motion.ul animate={{ width: 200 }}>
-              <li>{authUser.email}</li>
+              <li>{userAuth.email}</li>
               <li>
                 <Link to="/personal" onClick={closeDropdown}>
                   Personal

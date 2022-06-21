@@ -8,6 +8,7 @@
         box-shadow: none;
         padding: 0;
         width: 100%;
+        border: none;
     }
 
     .shipping,
@@ -143,6 +144,9 @@
                 width: 100%;
                 height: 50px;
                 margin: 15px 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
 

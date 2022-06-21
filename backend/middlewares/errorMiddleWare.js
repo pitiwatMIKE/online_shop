@@ -8,7 +8,12 @@ const errorHandle = (err, req, res, next) => {
   res.status(statusCode);
   res.json({
     message: err.message,
-    stack: process.env.NODE_ENV === "production" ? null : err.stack.split("\n"),
+    stack:
+      process.env.NODE_ENV === "production"
+        ? null
+        : err.stack
+        ? err.stack.split("\n")
+        : err.stack,
   });
 };
 

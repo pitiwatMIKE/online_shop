@@ -14,6 +14,9 @@ export default function Navbar({ sidenav, setSidenav }) {
         <nav className="navbar">
           <ul className="nav-links">
             <li>
+              <Link to="/">HOME</Link>
+            </li>
+            <li>
               <Link to="/shop">SHOP</Link>
             </li>
             <li>

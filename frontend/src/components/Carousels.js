@@ -6,18 +6,7 @@ export default function Carousels() {
     <Carousel>
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="http://placehold.jp/1200x700.png"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
+          className="d-block"
           src="http://placehold.jp/1200x700.png"
           alt="Second slide"
         />

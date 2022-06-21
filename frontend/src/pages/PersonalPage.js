@@ -1,17 +1,21 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FormAddress from "../components/FormAddress";
 import FormUser from "../components/FormUser";
 import LayoutContent from "../components/LayoutContent";
-import { notLogin } from "../reducers/users/authSlice";
+import { logout, selectorAuth } from "../reducers/users/authSlice";
 
 export default function PersonalPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { values: userAuth } = useSelector(selectorAuth);
   useEffect(() => {
-    dispatch(notLogin(() => navigate("/signin")));
-  }, [dispatch, navigate]);
+    if (!userAuth) {
+      dispatch(logout());
+      navigate("/signin");
+    }
+  }, [dispatch, navigate, userAuth]);
   return (
     <>
       <LayoutContent>

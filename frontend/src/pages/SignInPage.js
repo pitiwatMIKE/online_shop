@@ -39,7 +39,7 @@ export default function SignInPage() {
     if (userAuth) {
       navigate(from);
     }
-  }, [navigate, location, userAuth, loading]);
+  }, [navigate, location, userAuth]);
 
   return (
     <div className="form-wrap">

@@ -11,6 +11,11 @@ import ScrollToTop from "./components/ScrollToTop";
 import PersonalPage from "./pages/PersonalPage";
 import CheckOutPage from "./pages/CheckOutPage";
 import MyOrderPage from "./pages/MyOrderPage";
+import AdminPage from "./pages/admin/AdminPage";
+import OrderAmindPage from "./pages/admin/OrderAmindPage";
+import CarouselAdminPage from "./pages/admin/CarouselAdminPage";
+import ProductAdminPage from "./pages/admin/ProductAdminPage";
+import UserAdmin from "./pages/admin/UserAdmin";
 
 export default function App() {
   return (
@@ -32,6 +37,13 @@ export default function App() {
           <Route path="/personal" element={<PersonalPage />} />
           <Route path="/checkout" element={<CheckOutPage />} />
           <Route path="/myorder" element={<MyOrderPage />} />
+
+          <Route path="/admin" element={<AdminPage />}>
+            <Route path="order" element={<OrderAmindPage />} />
+            <Route path="product" element={<ProductAdminPage />} />
+            <Route path="user" element={<UserAdmin />} />
+            <Route path="carousel" element={<CarouselAdminPage />} />
+          </Route>
         </Routes>
       </LayoutContainer>
     </>

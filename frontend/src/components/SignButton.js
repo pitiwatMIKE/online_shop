@@ -58,16 +58,31 @@ export default function SignButton({ closeSide }) {
           {dropdown && (
             <motion.ul animate={{ width: 200 }}>
               <li>{userAuth.email}</li>
-              <li>
-                <Link to="/personal" onClick={closeDropdown}>
-                  Personal
-                </Link>
-              </li>
-              <li>
-                <Link to="/myorder" onClick={closeDropdown}>
-                  My Orders
-                </Link>
-              </li>
+              {userAuth.role === "user" && (
+                <>
+                  <li>
+                    <Link to="/personal" onClick={closeDropdown}>
+                      Personal
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/myorder" onClick={closeDropdown}>
+                      My Orders
+                    </Link>
+                  </li>
+                </>
+              )}
+
+              {userAuth.role === "admin" && (
+                <>
+                  <li>
+                    <Link to="/admin" onClick={closeDropdown}>
+                      Admin Manager
+                    </Link>
+                  </li>
+                </>
+              )}
+
               <li>
                 <Link to="/" onClick={signoutHandle}>
                   SignOut

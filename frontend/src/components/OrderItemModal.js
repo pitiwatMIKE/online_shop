@@ -7,13 +7,13 @@ import {
 } from "../reducers/orders/orderItemSlice";
 
 export default function OrderItemModal(props) {
-  const { orderid } = props;
+  const { orderid, userid } = props;
   const dispatch = useDispatch();
   const { values: orderItems } = useSelector(selectorOrderItem);
 
   useEffect(() => {
-    dispatch(getOrderItems(orderid));
-  }, [dispatch, orderid]);
+    dispatch(getOrderItems(orderid, userid));
+  }, [dispatch, orderid, userid]);
 
   return (
     <Modal {...props} className="cart-modal" scrollable size="lg" centered>

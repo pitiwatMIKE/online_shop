@@ -18,6 +18,7 @@ export default function OrderAmindPage() {
   const [orderItemModal, setOrderItemModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
   const [userAddress, setUserAddress] = useState(null);
+  const [userId, setUserId] = useState(null)
   const [orderId, setOrderId] = useState(null);
   const dispatch = useDispatch();
   const { loading, values: orders } = useSelector(selectorOrder);
@@ -63,6 +64,7 @@ export default function OrderAmindPage() {
                         onClick={(e) => {
                           e.preventDefault();
                           setOrderId(order.id);
+                          setUserId(order.User.id)
                           setOrderItemModal(true);
                         }}
                       >
@@ -123,6 +125,7 @@ export default function OrderAmindPage() {
           show={orderItemModal}
           onHide={() => setOrderItemModal(false)}
           orderid={orderId}
+          userid={userId}
         />
       )}
     </LayoutContent>

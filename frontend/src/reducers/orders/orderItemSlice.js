@@ -31,7 +31,7 @@ const orderItemSlice = createSlice({
 
 const { loading, error, success } = orderItemSlice.actions;
 
-export const getOrderItems = (orderId) => async (dispatch) => {
+export const getOrderItems = (orderId, userId='') => async (dispatch) => {
   const userAuth = JSON.parse(localStorage.getItem("userAuth"));
   const config = {
     headers: {
@@ -42,7 +42,7 @@ export const getOrderItems = (orderId) => async (dispatch) => {
   dispatch(loading());
   try {
     const response = await axios.get(
-      `/api/orders/order_items?orderId=${orderId}`,
+      `/api/orders/order_items?orderId=${orderId}&userId=${userId}`,
       config
     );
     dispatch(success(response.data));

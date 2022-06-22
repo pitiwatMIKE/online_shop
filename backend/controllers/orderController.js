@@ -48,7 +48,7 @@ const getOrders = asyncHandler(async (req, res) => {
 });
 
 // @desc    get OrderItems
-// @route   GET /api/orders/items?
+// @route   GET /api/orders/order_items?
 // @access  protected
 const getOrderItems = asyncHandler(async (req, res) => {
   const getUserId = req.query.userId || req.user.id;
@@ -89,7 +89,7 @@ const getOrderShippingStatus = asyncHandler(async (req, res) => {
     order: [["userId", "DESC"]],
     include: {
       model: User,
-      attributes: ["email"],
+      attributes: ["id", "email"],
 
       include: {
         model: Address,

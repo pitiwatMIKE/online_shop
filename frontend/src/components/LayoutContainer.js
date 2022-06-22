@@ -10,7 +10,9 @@ export default function LayoutContainer({ children }) {
 
   // get userAuth from localStrage when refresh page
   useEffect(() => {
+    console.log("layout container")
     if (!userAuth?.token) {
+      console.log('container logout')
       dispatch(logout());
     }
   }, [dispatch, userAuth?.token]);

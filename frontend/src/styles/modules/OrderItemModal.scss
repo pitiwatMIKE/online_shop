@@ -1,0 +1,48 @@
+.order-item-container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 0 auto;
+
+
+    .column,
+    .order-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        div {
+            width: 20%;
+        }
+    }
+
+    .order-item {
+
+        img {
+            width: 75px
+        }
+    }
+}
+
+@media only screen and(max-width: $breakpoint-lg) {
+    .order-item-container {
+        font-size: 14px;
+
+        .column,
+        .order-item {
+            div {
+                width: 23%;
+            }
+        }
+
+        .order-item {
+            img {
+                width: 60px;
+            }
+        }
+
+        hr {
+            margin: 9px 0;
+        }
+    }
+}

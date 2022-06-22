@@ -64,6 +64,11 @@ export default function SignButton({ closeSide }) {
                 </Link>
               </li>
               <li>
+                <Link to="/myorder" onClick={closeDropdown}>
+                  My Orders
+                </Link>
+              </li>
+              <li>
                 <Link to="/" onClick={signoutHandle}>
                   SignOut
                 </Link>

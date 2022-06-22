@@ -8,6 +8,8 @@ import productReducer from "./reducers/products/productSlice";
 import myAccountReducer from "./reducers/users/myAccountSlice";
 import addressReducer from "./reducers/users/addressSlice";
 import cartReducer from "./reducers/products/cartSlice";
+import orderReducer from "./reducers/orders/orderSlice";
+import orderItemReducer from "./reducers/orders/orderItemSlice";
 
 const combinedReducer = combineReducers({
   auth: authReducer,
@@ -15,6 +17,8 @@ const combinedReducer = combineReducers({
   myAccount: myAccountReducer,
   address: addressReducer,
   cart: cartReducer,
+  order: orderReducer,
+  orderItem: orderItemReducer,
 });
 
 const rootReducer = (state, action) => {

@@ -1,6 +1,26 @@
 .order-container {
+    .swap-btn {
+        i {
+            margin-right: 5px;
+            font-size: 20px;
+        }
+
+        border: 1px solid #000f;
+        height: 40px;
+        color: #ffff;
+        background-color: #000f;
+    }
+
+    .send-btn{
+        button{
+            color: #ffff;
+            background-color: #000f;
+        }
+    }
+
     h2 {
         margin-top: 20px;
+        margin-bottom: 25px;
     }
 
     table {
@@ -19,7 +39,7 @@
         }
 
         img {
-           max-width: 30px;
+            max-width: 30px;
         }
     }
 }

@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const { Order, Product } = require("../db/models");
+const { Order, Product, User, Address } = require("../db/models");
 const omise = require("omise")({
   publicKey: process.env.OMISE_PUBLICE_KEY,
   secretKey: process.env.OMISE_SECRET_KEY,
@@ -37,18 +37,23 @@ const payment = asyncHandler(async (req, res) => {
 // @route   GET /api/orders/
 // @access  protected
 const getOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.findAll({ where: { userId: req.user.id }, order: [['id', 'DESC']] });
+  let status = req.query.status || [true, false];
+  const orders = await Order.findAll({
+    where: { userId: req.user.id, shippingStatus: status },
+    order: [["id", "DESC"]],
+  });
   if (orders) {
     res.json(orders);
   }
 });
 
 // @desc    get OrderItems
-// @route   GET /api/orders/items
+// @route   GET /api/orders/items?
 // @access  protected
 const getOrderItems = asyncHandler(async (req, res) => {
+  const getUserId = req.query.userId || req.user.id;
   const order = await Order.findOne({
-    where: { userId: req.user.id, id: req.query.orderId },
+    where: { userId: getUserId, id: req.query.orderId },
   });
 
   if (order) {
@@ -75,9 +80,41 @@ const create = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    get Orders not shipped.
+// @route   GET /api/orders/shipping?
+// @access  protected
+const getOrderShippingStatus = asyncHandler(async (req, res) => {
+  const orders = await Order.findAll({
+    where: { shippingStatus: req.query.status },
+    order: [["userId", "DESC"]],
+    include: {
+      model: User,
+      attributes: ["email"],
+
+      include: {
+        model: Address,
+      },
+    },
+  });
+  if (orders) {
+    res.json(orders);
+  }
+});
+
+// @desc    update Orders
+// @route   PUT /api/order/update/:id
+// @access  protected
+const update = asyncHandler(async (req, res) => {
+  req.body.shippingDate = Date.now();
+  await Order.update({ ...req.body }, { where: { id: req.params.id } });
+  res.json({ message: "update success" });
+});
+
 module.exports = {
   payment,
   getOrders,
   getOrderItems,
   create,
+  getOrderShippingStatus,
+  update,
 };

@@ -13,7 +13,7 @@ export default function AdminPage() {
   const { values: userAuth } = useSelector(selectorAuth);
 
   useEffect(() => {
-    if (!userAuth) {
+    if (!userAuth || userAuth.role !== "admin") {
       dispatch(logout());
       navigate("/signin", { state: { from: "/admin" } });
     } else {

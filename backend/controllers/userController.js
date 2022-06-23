@@ -103,9 +103,15 @@ const updateMyAccount = asyncHandler(async (req, res) => {
   });
 });
 
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.findAll();
+  res.json(users);
+});
+
 module.exports = {
   login,
   register,
   getMyAccount,
   updateMyAccount,
+  getUsers
 };

@@ -8,8 +8,10 @@ const {
   login,
   getMyAccount,
   updateMyAccount,
+  getUsers,
 } = require("../controllers/userController");
 
+router.route("/").get(protect, permit(ADMIN), getUsers);
 router.route("/login").post(login);
 router.route("/register").post(register);
 router.route("/my_account").get(protect, permit(USER, ADMIN), getMyAccount);

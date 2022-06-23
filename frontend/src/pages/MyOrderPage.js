@@ -31,7 +31,7 @@ export default function MyOrderPage() {
 
   return (
     <LayoutContent>
-      <div className="order-container">
+      <div className="admin-table-container">
         <h2>MY ORDERS</h2>
         <button
           className="swap-btn"
@@ -59,7 +59,7 @@ export default function MyOrderPage() {
               </thead>
               <tbody>
                 {orders.map((order) => (
-                  <tr key={order.id} className="order-item">
+                  <tr key={order.id} className="table-item">
                     <td>{Moment(order.createdAt).format("DD-MM-YYYY")}</td>
                     <td>
                       <Link
@@ -76,14 +76,14 @@ export default function MyOrderPage() {
                     <td>฿ {order.subTotal}</td>
                     <td>฿ {order.shippingPrice}</td>
                     <td>฿ {order.total}</td>
-                    <td className="text-center">
+                    <td className="text-center icon-status">
                       {order.paymentStatus ? (
                         <img src={"/check.png"} alt="check_image" />
                       ) : (
                         <img src={"/wrong.png"} alt="wrong_image" />
                       )}
                     </td>
-                    <td className="text-center">
+                    <td className="text-center icon-status">
                       {order.shippingStatus ? (
                         <img src={"/check.png"} alt="check_image" />
                       ) : (

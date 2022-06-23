@@ -1,0 +1,81 @@
+.admin-table-container {
+
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+
+    table {
+        min-width: 700px;
+        margin: 30px 0;
+
+        thead {
+            background-color: #000f;
+            color: #ffff
+        }
+    }
+
+    .table-item {
+        td {
+            padding: 20px 10px;
+            vertical-align: middle;
+        }
+    }
+
+    .icon-status {
+        img {
+            max-width: 30px;
+        }
+    }
+
+    .swap-btn {
+        i {
+            margin-right: 5px;
+            font-size: 20px;
+        }
+
+        border: 1px solid #000f;
+        height: 40px;
+        color: #ffff;
+        background-color: #000f;
+    }
+
+    .image-table {
+        img {
+            width: 95px;
+        }
+    }
+
+    .send-btn {
+        button {
+            color: #ffff;
+            background-color: #000f;
+        }
+    }
+
+    .button-primary,
+    .button-secondary {
+        height: 45px;
+        width: 90px;
+        border: 1px solid;
+    }
+
+    .button-primary {
+        background-color: #000f;
+        color: #ffff;
+    }
+
+    .button-secondary {
+        background-color: #ece7e7;
+    }
+
+
+}
+
+@media only screen and (max-width: $breakpoint-md) {
+    .admin-table-container {
+        table {
+            font-size: 15px;
+        }
+    }
+}

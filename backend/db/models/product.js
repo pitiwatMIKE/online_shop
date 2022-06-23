@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           isMoreThan(value) {
-            if (Number(value) > 0) {
+            if (Number(value) <= 0) {
               throw new Error("Price must be greater than 0");
             }
           },

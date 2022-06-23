@@ -29,7 +29,7 @@ export default function OrderAmindPage() {
 
   return (
     <LayoutContent>
-      <div className="order-container">
+      <div className="admin-table-container">
         <button
           className="swap-btn"
           onClick={() => setShippingStatus(!shippingStatus)}
@@ -56,7 +56,7 @@ export default function OrderAmindPage() {
               </thead>
               <tbody>
                 {orders.map((order) => (
-                  <tr key={order.id} className="order-item">
+                  <tr key={order.id} className="table-item">
                     <td>{moment(order.createdAt).format("DD-MM-YYYY")}</td>
                     <td>
                       <Link
@@ -85,14 +85,14 @@ export default function OrderAmindPage() {
                     </td>
                     <td>{order.User.email}</td>
                     <td>฿ {order.total}</td>
-                    <td className="text-center">
+                    <td className="text-center icon-status">
                       {order.paymentStatus ? (
                         <img src={"/check.png"} alt="check_image" />
                       ) : (
                         <img src={"/wrong.png"} alt="wrong_image" />
                       )}
                     </td>
-                    <td className="text-center">
+                    <td className="text-center icon-status">
                       {order.shippingStatus ? (
                         <img src={"/check.png"} alt="check_image" />
                       ) : (

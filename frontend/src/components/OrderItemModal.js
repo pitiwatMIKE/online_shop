@@ -31,7 +31,7 @@ export default function OrderItemModal(props) {
           <hr />
           {orderItems.map((product, index) => (
             <div key={product.id}>
-              <div className="order-item">
+              <div className="table-item">
                 <div>
                   <img src={product.imageUrl} alt="product_image" />
                 </div>

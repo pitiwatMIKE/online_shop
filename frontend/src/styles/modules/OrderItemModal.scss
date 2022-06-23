@@ -6,7 +6,7 @@
 
 
     .column,
-    .order-item {
+    .table-item {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -16,7 +16,7 @@
         }
     }
 
-    .order-item {
+    .table-item {
 
         img {
             width: 75px
@@ -29,13 +29,13 @@
         font-size: 14px;
 
         .column,
-        .order-item {
+        .table-item {
             div {
                 width: 23%;
             }
         }
 
-        .order-item {
+        .table-item {
             img {
                 width: 60px;
             }

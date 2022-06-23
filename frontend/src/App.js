@@ -41,6 +41,7 @@ export default function App() {
           <Route path="/admin" element={<AdminPage />}>
             <Route path="order" element={<OrderAmindPage />} />
             <Route path="product" element={<ProductAdminPage />} />
+            <Route path="product/page/:page" element={<ProductAdminPage />} />
             <Route path="user" element={<UserAdmin />} />
             <Route path="carousel" element={<CarouselAdminPage />} />
           </Route>

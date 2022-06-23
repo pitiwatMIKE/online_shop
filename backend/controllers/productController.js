@@ -47,8 +47,20 @@ const getProductLatest = asyncHandler(async (req, res) => {
   res.json(products);
 });
 
+// @desc    create product
+// @route   POST /api/prodcut/create
+// @access  protected
+const create = asyncHandler(async (req, res) => {
+  if (req.imageFileName) {
+    req.body.imageUrl = "/static/images/imageProduct/" + req.imageFileName;
+  }
+  const product = await Product.create(req.body);
+  res.json(product);
+});
+
 module.exports = {
   getProducts,
   getProduct,
   getProductLatest,
+  create,
 };

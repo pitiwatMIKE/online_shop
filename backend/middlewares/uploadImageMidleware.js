@@ -4,7 +4,6 @@ const imagePath = __dirname + "/public/images";
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    console.log(file.fieldname)
     cb(null,  `./backend/public/images/${file.fieldname}`, cb);
   },
   filename: function (req, file, cb) {

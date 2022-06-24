@@ -3,12 +3,18 @@
 //     span {
 //         width: 34px;
 //         height: 34px;
-//         border-radius: 50%;
-//         background-color: #000f;
+//         // padding: 20px;
+//         // border-radius: 50%;
+//         background-color:  rgba(0, 0, 0, 0.16);;
 //         opacity: 0.6;
 //     }
 // }
 
+.carousel-caption{
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin: 0 auto;
+}
 
 .carousel {
     max-width: 1600px;

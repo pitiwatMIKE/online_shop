@@ -10,8 +10,8 @@
         margin: 30px 0;
 
         thead {
-            background-color: #000f;
-            color: #ffff
+            background-color: $primary-color;
+            color: $secondary-text-color;
         }
     }
 
@@ -36,8 +36,8 @@
 
         border: 1px solid #000f;
         height: 40px;
-        color: #ffff;
-        background-color: #000f;
+        color: $btn-primary-text-color;
+        background-color: $btn-primary-color;
     }
 
     .image-table {
@@ -48,8 +48,8 @@
 
     .send-btn {
         button {
-            color: #ffff;
-            background-color: #000f;
+            color: $btn-primary-text-color;
+            background-color: $btn-primary-color;
         }
     }
 
@@ -61,12 +61,12 @@
     }
 
     .button-primary {
-        background-color: #000f;
-        color: #ffff;
+        background-color: $btn-primary-color;
+        color: $btn-primary-text-color;
     }
 
     .button-secondary {
-        background-color: #ece7e7;
+        background-color: $btn-secondary-color;
     }
 
 

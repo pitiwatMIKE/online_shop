@@ -9,6 +9,9 @@ const {
   getMyAccount,
   updateMyAccount,
   getUsers,
+  getUserById,
+  update,
+  deleteUser,
 } = require("../controllers/userController");
 
 router.route("/").get(protect, permit(ADMIN), getUsers);
@@ -18,5 +21,9 @@ router.route("/my_account").get(protect, permit(USER, ADMIN), getMyAccount);
 router
   .route("/my_account/update")
   .put(protect, permit(USER, ADMIN), updateMyAccount);
+
+router.route("/update/:id").put(protect, permit(ADMIN), update);
+router.route("/delete/:id").delete(protect, permit(ADMIN), deleteUser);
+router.route("/:id").get(protect, permit(ADMIN), getUserById);
 
 module.exports = router;

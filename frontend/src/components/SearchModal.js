@@ -15,7 +15,9 @@ export default function SearchModal(props) {
 
   return (
     <Modal {...props} size="md" centered>
-      <Modal.Header closeButton />
+      <Modal.Header closeButton>
+        <Modal.Title>Search Product</Modal.Title>
+      </Modal.Header>
       <Modal.Body>
         <form onSubmit={handleSubmit}>
           <div className="input-search">

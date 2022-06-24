@@ -32,9 +32,9 @@ export default function FormProduct({ isUpdate }) {
 
   const handleClickSubmit = (values) => {
     if (isUpdate) {
-      dispatch(updateProduct(values, id));
+      dispatch(updateProduct(values, id, navigate));
     } else {
-      dispatch(createProduct(values));
+      dispatch(createProduct(values, navigate));
     }
   };
 

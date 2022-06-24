@@ -40,10 +40,10 @@
             }
 
             &:hover {
-                background-color: #000f;
+                background-color: $primary-color;
 
                 i {
-                    color: #ffff;
+                    color: $secondary-text-color;
                 }
             }
         }
@@ -67,28 +67,28 @@
     display: block;
 
     button {
-        border: 1px solid #000f;
-        background-color: #ffff;
+        border: 1px solid $btn-white-text-color;
+        background-color: $btn-white-color;
         height: 50px;
     }
 
     .btn-show-now {
         width: 100%;
-        color: #ffff;
-        background-color: #000f;
+        color: $btn-primary-text-color;
+        background-color: $btn-primary-color;
     }
 
     .btn-cancel {
         width: 45%;
-        border-color: #e4e4e4;
-        background-color: #e4e4e4;
+        border-color: $btn-secondary-color;
+        background-color: $btn-secondary-color;
         margin-right: 10px;
     }
 
     .btn-check-out {
         width: 45%;
-        color: #ffff;
-        background-color: #000f;
+        color: $btn-primary-text-color;
+        background-color: $btn-primary-color;
     }
 }
 

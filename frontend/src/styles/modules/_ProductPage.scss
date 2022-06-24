@@ -50,7 +50,7 @@
 
         button {
             height: 50px;
-            background-color: #fff;
+            background-color: $btn-white-color;
             border: 1px solid #00000f;
             padding: 10px 25px;
             box-sizing: border-box;
@@ -58,8 +58,8 @@
 
         .buy-now {
             button {
-                color: #ffff;
-                background-color: #000f;
+                color: $btn-primary-text-color;
+                background-color: $btn-primary-color;
             }
         }
     }

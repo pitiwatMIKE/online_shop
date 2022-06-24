@@ -33,12 +33,12 @@
     }
 
     .button-primary {
-        background-color: #000f;
-        color: #ffff;
+        background-color: $btn-primary-color;
+        color: $btn-primary-text-color;
     }
 
     .button-secondary {
-        background-color: #ece7e7;
+        background-color: $btn-secondary-color;
     }
 }
 

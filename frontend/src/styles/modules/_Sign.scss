@@ -39,8 +39,8 @@
 
 .form-primary-btn {
     border-radius: 0;
-    background-color: $primary-color;
-    color: #ffff;
+    background-color: $btn-primary-color;
+    color: $btn-primary-text-color;
     border: none;
     padding: 10px 20px;
     width: 100%;
@@ -48,7 +48,7 @@
 
 .form-secondary-btn {
     border-radius: 0;
-    background-color: #e9e8e7;
+    background-color: $btn-secondary-color;
     border: none;
     padding: 10px 20px;
     width: 100%;

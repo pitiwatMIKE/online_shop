@@ -17,11 +17,19 @@
     a {
         font-size: 17px;
         font-weight: 500;
-        color: $text-color-primary;
+        color: $secondary-text-color;
         text-decoration: none;
 
         &:hover {
-            color: $text-color-secondary;
+            color: $hover-color-link;
+        }
+    }
+
+    .sign-dropdown {
+        ul {
+            a {
+                color: $primary-text-color;
+            }
         }
     }
 
@@ -51,7 +59,7 @@
         font-size: 40px;
 
         &:hover {
-            color: $text-color-primary;
+            color: $hover-color-link;
         }
     }
 
@@ -76,13 +84,14 @@
 .navbar {
     .sign-button {
         border-radius: 10px;
-        background-color: transparent;
+        background-color: $secondary-color;
+        color: $primary-color;
         padding: 7px;
-        border: 1px solid #000f;
+        border: 1px solid $secondary-color;
         transition-duration: 0.4s;
 
         &:hover {
-            background-color: $hover-color-link;
+            color: $primary-color;
         }
     }
 
@@ -94,7 +103,7 @@
             align-items: flex-start;
             position: absolute;
             display: flex;
-            background-color: #ffff;
+            background-color: $secondary-color;
             right: 0px;
             width: 0px;
             border: 1px solid black;
@@ -123,7 +132,7 @@
     .navbar {
         padding: 0 13px;
 
-        .sign-button{
+        .sign-button {
             display: none;
         }
 

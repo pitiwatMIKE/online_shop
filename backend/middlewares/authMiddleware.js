@@ -44,8 +44,8 @@ const permit = (...permittedRoles) => {
     if (user && permittedRoles.includes(user.role)) {
       next();
     } else {
-      res.status(403);
-      throw new Error("forbidden");
+      res.status(401);
+      throw new Error("Not authorized");
     }
   };
 };

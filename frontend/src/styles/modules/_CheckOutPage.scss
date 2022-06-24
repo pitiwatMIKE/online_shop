@@ -67,8 +67,8 @@
 
             button {
                 height: 50px;
-                color: #ffff;
-                background-color: #000f;
+                color: $btn-primary-text-color;
+                background-color: $btn-primary-color;
                 border: 1px solid #000f;
                 width: 100%;
             }
@@ -139,8 +139,8 @@
 
         .btn-payment {
             button {
-                color: #ffff;
-                background-color: #000f;
+                color: $btn-primary-text-color;
+                background-color: $btn-primary-color;
                 width: 100%;
                 height: 50px;
                 margin: 15px 0;
@@ -156,7 +156,7 @@
         }
 
         .payment-alert{
-            color: #dc3545;
+            color: $danger-color;
         }
     }
 

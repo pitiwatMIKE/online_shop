@@ -14,14 +14,15 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     loading: (state) => {
-      return { ...initialState, loading: true };
+      return { ...state, loading: true, error: false };
     },
     success: (state, action) => {
-      return { ...initialState, values: action.payload };
+      return { ...state, loading: false, error: false, values: action.payload };
     },
     error: (state, action) => {
       return {
-        ...initialState,
+        ...state,
+        loading: false,
         error: true,
         errMessage: action.payload,
       };
@@ -67,7 +68,7 @@ export const getProductLatest = (amount) => async (dispatch) => {
   }
 };
 
-export const createProduct = (data) => async (dispatch) => {
+export const createProduct = (data, navigate) => async (dispatch) => {
   const userAuth = JSON.parse(localStorage.getItem("userAuth"));
   const config = {
     headers: {
@@ -80,6 +81,7 @@ export const createProduct = (data) => async (dispatch) => {
   try {
     const response = await axios.post(`/api/products/create`, data, config);
     dispatch(success(response.data));
+    navigate('/admin/product')
   } catch (e) {
     e.response.status === 401
       ? dispatch(logout())
@@ -87,7 +89,7 @@ export const createProduct = (data) => async (dispatch) => {
   }
 };
 
-export const updateProduct = (data, id) => async (dispatch) => {
+export const updateProduct = (data, id, navigate) => async (dispatch) => {
   const userAuth = JSON.parse(localStorage.getItem("userAuth"));
   const config = {
     headers: {
@@ -104,6 +106,28 @@ export const updateProduct = (data, id) => async (dispatch) => {
       config
     );
     dispatch(success(response.data));
+    navigate('/admin/product')
+  } catch (e) {
+    e.response.status === 401
+      ? dispatch(logout())
+      : dispatch(error(e.response.data.message));
+  }
+};
+
+export const deleteProduct = (id) => async (dispatch, getState) => {
+  const userAuth = JSON.parse(localStorage.getItem("userAuth"));
+  const config = {
+    headers: {
+      Authorization: "Bearer " + userAuth?.token,
+    },
+  };
+
+  dispatch(loading());
+  try {
+    await axios.delete(`/api/products/delete/${id}`, config);
+    let { products, maxPage } = getState().product.values;
+    products = products.filter((product) => product.id !== id);
+    dispatch(success({ products, maxPage }));
   } catch (e) {
     e.response.status === 401
       ? dispatch(logout())

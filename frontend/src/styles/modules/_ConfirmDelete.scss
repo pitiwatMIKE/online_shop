@@ -1,0 +1,31 @@
+.confirm-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 20px;
+
+    i {
+        color: red;
+        font-size: 50px;
+    }
+}
+
+.btn-confirm-delete {
+
+    .button-primary,
+    .button-secondary {
+        padding: 10px 20px;
+        border: 1px solid #000f;
+        width: 40%;
+        margin: 0 8px;
+    }
+
+    .button-primary {
+        background-color: $btn-primary-color;
+        color: $btn-primary-text-color;
+    }
+
+    .button-secondary {
+        background-color: $btn-secondary-color;
+    }
+}

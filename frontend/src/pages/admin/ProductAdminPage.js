@@ -1,16 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import ConfirmDelete from "../../components/ConfirmDelete";
 import LayoutContent from "../../components/LayoutContent";
 import Loading from "../../components/Loading";
 import Paginate from "../../components/Paginate";
 import {
+  deleteProduct,
   getProducts,
   selectorProduct,
 } from "../../reducers/products/productSlice";
 
 export default function ProductAdminPage() {
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+  const [productId, setProductId] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { page } = useParams();
@@ -18,6 +22,8 @@ export default function ProductAdminPage() {
     loading,
     values: { products, maxPage },
   } = useSelector(selectorProduct);
+
+  const deleteHandle = (id) => dispatch(deleteProduct(id));
 
   useEffect(() => {
     dispatch(getProducts({ page }));
@@ -62,13 +68,23 @@ export default function ProductAdminPage() {
                       <td>
                         <button
                           className="button-primary"
-                          onClick={() => navigate(`/admin/product/update/${product.id}`)}
+                          onClick={() =>
+                            navigate(`/admin/product/update/${product.id}`)
+                          }
                         >
                           UPDATE
                         </button>
                       </td>
                       <td>
-                        <button className="button-secondary" >DELELTE</button>
+                        <button
+                          className="button-secondary"
+                          onClick={() => {
+                            setShowConfirmDelete(true);
+                            setProductId(product.id);
+                          }}
+                        >
+                          DELELTE
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -78,6 +94,13 @@ export default function ProductAdminPage() {
           </div>
         )}
       </div>
+
+      <ConfirmDelete
+        show={showConfirmDelete}
+        onHide={() => setShowConfirmDelete(false)}
+        deleteId={productId}
+        deleteHandle={deleteHandle}
+      />
 
       <div
         className="my-5"

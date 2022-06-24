@@ -18,6 +18,7 @@ import ProductAdminPage from "./pages/admin/ProductAdminPage";
 import UserAdmin from "./pages/admin/UserAdmin";
 import CreateProductPage from "./pages/admin/CreateProductPage";
 import UpdateProductPage from "./pages/admin/UpdateProductPage";
+import UpdaetUserPage from "./pages/admin/UpdaetUserPage";
 
 export default function App() {
   return (
@@ -47,6 +48,7 @@ export default function App() {
             <Route path="product/update/:id" element={<UpdateProductPage />} />
             <Route path="product/page/:page" element={<ProductAdminPage />} />
             <Route path="user" element={<UserAdmin />} />
+            <Route path="user/update/:id" element={<UpdaetUserPage />} />
             <Route path="carousel" element={<CarouselAdminPage />} />
           </Route>
         </Routes>

@@ -33,7 +33,7 @@ export default function OrderItemModal(props) {
             <div key={product.id}>
               <div className="table-item">
                 <div>
-                  <img src={product.imageUrl} alt="product_image" />
+                  <img src={product.imageProduct} alt="product_image" />
                 </div>
                 <div>{product.name}</div>
                 <div>{product.price}</div>

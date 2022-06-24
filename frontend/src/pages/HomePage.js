@@ -35,8 +35,9 @@ export default function HomePage() {
                   sm={6}
                   md={6}
                   lg={6}
-                  xl={4}
-                  xxl={3}
+                  xxl='auto'
+                  // xl={4}
+                  // xxl={3}
                 >
                   <CardProduct id={item.id} product={item} />
                 </Col>

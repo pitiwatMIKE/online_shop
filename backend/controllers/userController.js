@@ -103,6 +103,9 @@ const updateMyAccount = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    get all users
+// @route   GET /api/users
+// @access  protected
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.findAll();
   res.json(users);
@@ -113,5 +116,5 @@ module.exports = {
   register,
   getMyAccount,
   updateMyAccount,
-  getUsers
+  getUsers,
 };

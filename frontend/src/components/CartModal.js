@@ -35,7 +35,7 @@ export default function CartModal(props) {
             {cart.map((product) => (
               <div key={product.id}>
                 <div className="product-cart">
-                  <img src={product.imageUrl} alt="product_image" />
+                  <img src={product.imageProduct} alt="product_image" />
                   <div className="product-name">{product.name}</div>
                   <div className="product-qty">
                     <input

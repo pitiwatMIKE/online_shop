@@ -17,7 +17,7 @@ module.exports = {
       desc: {
         type: Sequelize.TEXT,
       },
-      imageUrl: {
+      imageProduct: {
         type: Sequelize.STRING,
       },
       createdAt: {

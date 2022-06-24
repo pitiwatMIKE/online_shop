@@ -29,15 +29,21 @@ const getProducts = asyncHandler(async (req, res) => {
 });
 
 // @desc    get prouduct id
-// @route   GET /api/product/:id
+// @route   GET /api/products/:id
 // @access  public
 const getProduct = asyncHandler(async (req, res) => {
   const product = await Product.findByPk(req.params.id);
-  res.json(product);
+  res.json({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    desc: product.desc,
+    imageProduct: product.imageProduct,
+  });
 });
 
 // @desc    get prouduct latest
-// @route   GET /api/product/latest?amount=
+// @route   GET /api/products/latest?amount=
 // @access  public
 const getProductLatest = asyncHandler(async (req, res) => {
   const products = await Product.findAll({
@@ -48,14 +54,46 @@ const getProductLatest = asyncHandler(async (req, res) => {
 });
 
 // @desc    create product
-// @route   POST /api/prodcut/create
+// @route   POST /api/prodcuts/create
 // @access  protected
 const create = asyncHandler(async (req, res) => {
   if (req.imageFileName) {
-    req.body.imageUrl = "/static/images/imageProduct/" + req.imageFileName;
+    req.body.imageProduct = "/static/images/imageProduct/" + req.imageFileName;
   }
   const product = await Product.create(req.body);
   res.json(product);
+});
+
+// @desc    update Product
+// @route   PUT /api/products/update/:id
+// @access  protected
+const update = asyncHandler(async (req, res) => {
+  const product = await Product.findOne({ where: { id: req.params.id } });
+  if (product) {
+    if (req.imageFileName) {
+      req.body.imageProduct =
+        "/static/images/imageProduct/" + req.imageFileName;
+    }
+    const response = await product.update({ ...req.body });
+    res.json(response);
+  } else {
+    res.status(404);
+    throw new Error(`Not Found Product id: ${req.params.id}`);
+  }
+});
+
+// @desc    Delete Product
+// @route   DELTE /api/products/delete/:id
+// @access  protected
+const deleteProduct = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  const deleteProduct = await Product.destroy({ where: { id: id } });
+  if (deleteProduct) {
+    res.json(`Delete Product id:${id} success`);
+  } else {
+    res.status(404);
+    throw new Error(`Product id:${id} Not Found`);
+  }
 });
 
 module.exports = {
@@ -63,4 +101,6 @@ module.exports = {
   getProduct,
   getProductLatest,
   create,
+  update,
+  deleteProduct,
 };

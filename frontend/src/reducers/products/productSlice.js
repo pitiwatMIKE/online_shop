@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { logout } from "../users/authSlice";
 
 const initialState = {
   loading: false,
@@ -63,6 +64,50 @@ export const getProductLatest = (amount) => async (dispatch) => {
     dispatch(success(response.data));
   } catch (e) {
     dispatch(error(e.response.data.message));
+  }
+};
+
+export const createProduct = (data) => async (dispatch) => {
+  const userAuth = JSON.parse(localStorage.getItem("userAuth"));
+  const config = {
+    headers: {
+      Authorization: "Bearer " + userAuth?.token,
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  dispatch(loading());
+  try {
+    const response = await axios.post(`/api/products/create`, data, config);
+    dispatch(success(response.data));
+  } catch (e) {
+    e.response.status === 401
+      ? dispatch(logout())
+      : dispatch(error(e.response.data.message));
+  }
+};
+
+export const updateProduct = (data, id) => async (dispatch) => {
+  const userAuth = JSON.parse(localStorage.getItem("userAuth"));
+  const config = {
+    headers: {
+      Authorization: "Bearer " + userAuth?.token,
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  dispatch(loading());
+  try {
+    const response = await axios.put(
+      `/api/products/update/${id}`,
+      data,
+      config
+    );
+    dispatch(success(response.data));
+  } catch (e) {
+    e.response.status === 401
+      ? dispatch(logout())
+      : dispatch(error(e.response.data.message));
   }
 };
 

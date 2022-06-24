@@ -16,7 +16,7 @@ export default function CardProduct({ id, product }) {
         className="image-card"
         onClick={() => !clickSelectOp && navigate(`/product/${id}`)}
       >
-        <img src={product.imageUrl} alt="nice" />
+        <img src={product.imageProduct} alt="nice" />
         <div
           className="select-option"
           onClick={() => {

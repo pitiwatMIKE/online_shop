@@ -78,7 +78,7 @@ export default function CheckOutPage() {
               {cart.map((product) => (
                 <div key={product.id} className="product-items">
                   <div className="image">
-                    <img src={product.imageUrl} alt="image_produt" />
+                    <img src={product.imageProduct} alt="image_produt" />
                   </div>
                   <div className="name">{product.name}</div>
                   <div className="price">฿ {product.price}</div>

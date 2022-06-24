@@ -1,0 +1,51 @@
+.form-product-container {
+    max-width: 970px;
+    margin: 20px auto;
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    form {
+        border: 2px solid #000f;
+        padding: 30px;
+
+        .row>div {
+            margin: 14px 0;
+        }
+    }
+
+    .show-image-product {
+        img {
+            width: 200px;
+        }
+    }
+
+    .form-btn {
+        display: flex;
+        grid-gap: 10px;
+    }
+
+    .button-primary,
+    .button-secondary {
+        padding: 10px 20px;
+        border: 1px solid #000f;
+    }
+
+    .button-primary {
+        background-color: #000f;
+        color: #ffff;
+    }
+
+    .button-secondary {
+        background-color: #ece7e7;
+    }
+}
+
+@media only screen and (max-width: $breakpoint-sm){
+    .form-product-container{
+        form{
+            padding: 10px;
+        }
+    }
+}

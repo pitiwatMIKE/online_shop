@@ -34,7 +34,7 @@ export default function ProductPage() {
         <>
           <div className="product-container">
             <div className="show-product">
-              <img src={product.imageUrl} alt="product_image" />
+              <img src={product.imageProduct} alt="product_image" />
             </div>
             <div className="product-detail">
               <h3>{product.name}</h3>

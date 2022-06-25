@@ -17,8 +17,8 @@ module.exports = {
     password: process.env.CI_DB_PASSWORD,
     database: process.env.CI_DB_NAME,
     host: "127.0.0.1",
-    port: 3306,
-    dialect: "mysql",
+    port: 5432,
+    dialect: "postgres",
     dialectOptions: {
       bigNumberStrings: true,
     },

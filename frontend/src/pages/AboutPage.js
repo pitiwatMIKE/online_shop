@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Spinner, Table } from "react-bootstrap";
 import LayoutContent from "../components/LayoutContent";
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
   const [resetLoading, setResetLoading] = useState(false);
@@ -20,7 +21,12 @@ export default function AboutPage() {
 
   return (
     <LayoutContent>
-      <div className="about-container">
+      <motion.div
+        className="about-container"
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9 }}
+      >
         <div className="resetdb">
           <button onClick={handleResetDb}>
             {resetLoading && <Spinner animation="border" variant="light" />}
@@ -74,7 +80,7 @@ export default function AboutPage() {
             <div className="card-type">VISA</div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </LayoutContent>
   );
 }

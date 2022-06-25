@@ -137,19 +137,18 @@ export default function FormProduct({ isUpdate }) {
                 />
               </Form.Group>
 
-              <div className="show-image-product">
-                {values.imageProduct && (
+              {values.imageProduct && (
+                <div className="show-image-product">
                   <img
                     alt="not fount"
-                    width={250}
                     src={
                       typeof values.imageProduct === "object"
                         ? URL.createObjectURL(values.imageProduct)
                         : values.imageProduct
                     }
                   />
-                )}
-              </div>
+                </div>
+              )}
             </Row>
 
             <div className="form-btn">

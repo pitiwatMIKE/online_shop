@@ -15,12 +15,6 @@
         }
     }
 
-    .show-image-product {
-        img {
-            width: 200px;
-        }
-    }
-
     .form-btn {
         display: flex;
         grid-gap: 10px;
@@ -40,11 +34,23 @@
     .button-secondary {
         background-color: $btn-secondary-color;
     }
+
+    .show-image-product {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
 }
 
-@media only screen and (max-width: $breakpoint-sm){
-    .form-product-container{
-        form{
+@media only screen and (max-width: $breakpoint-sm) {
+    .form-product-container {
+        form {
             padding: 10px;
         }
     }

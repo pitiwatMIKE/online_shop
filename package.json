@@ -4,6 +4,7 @@
   "description": "workshop online shop",
   "main": "index.js",
   "scripts": {
+    "start": "node backend/index",
     "prod": "NODE_ENV=production node backend",
     "backend": "nodemon backend",
     "frontend": "npm start --prefix frontend",

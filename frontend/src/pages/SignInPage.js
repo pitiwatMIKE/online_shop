@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { Form, Row, Col } from "react-bootstrap";
@@ -21,6 +21,7 @@ const schema = yup.object().shape({
 });
 
 export default function SignInPage() {
+  const [showError, setShowError] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ export default function SignInPage() {
     values: userAuth,
   } = useSelector(selectorAuth);
   const handleClickSubmit = (values) => {
+    setShowError(true);
     dispatch(login(values));
   };
 
@@ -44,7 +46,7 @@ export default function SignInPage() {
   return (
     <div className="form-wrap">
       <h2 className="text-center form-title">Welcome to Online Shop</h2>
-      {error && <Error msg={errMessage} />}
+      {showError && error && <Error msg={errMessage} />}
       <Formik
         validationSchema={schema}
         onSubmit={handleClickSubmit}

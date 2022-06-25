@@ -50,14 +50,13 @@ export const login = (data) => async (dispatch) => {
 
 export const register = (data, navigate) => async (dispatch) => {
   dispatch(loading());
-
   try {
     const response = await axios.post(`/api/users/register`, data);
     localStorage.setItem("userAuth", JSON.stringify(response.data));
     dispatch(success(JSON.parse(localStorage.getItem("userAuth"))));
     navigate("/");
   } catch (e) {
-    dispatch(error(e.response.data.message.message));
+    dispatch(error(e.response.data.message));
   }
 };
 

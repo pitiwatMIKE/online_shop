@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { Form, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { register } from "../reducers/users/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { register, selectorAuth } from "../reducers/users/authSlice";
+import Error from "../components/Error";
 
 const initialValues = {
   firstName: "",
@@ -24,16 +25,21 @@ const schema = yup.object().shape({
 });
 
 export default function SignUpPage() {
+  const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { error, errMessage } = useSelector(selectorAuth);
+
   const handleClickSubmit = (values) => {
     // alert(JSON.stringify(values, null, 2));
+    setShowError(true);
     dispatch(register(values, navigate));
   };
 
   return (
     <div className="form-wrap">
       <h2 className="text-center form-title">Welcome to Online Shop</h2>
+      {showError && error && <Error msg={errMessage} />}
       <Formik
         validationSchema={schema}
         onSubmit={handleClickSubmit}

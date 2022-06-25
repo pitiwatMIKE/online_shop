@@ -17,6 +17,17 @@ app.use("/api/products", productRouter);
 app.use("/api/address", addressRouter);
 app.use("/api/orders", orderRouter);
 
+// db:migrate and db:seed
+app.get("/reset/db", async (req, res) => {
+  try {
+    await require("./resetdb")();
+    res.send("reset database success");
+  } catch (e) {
+    res.status(500);
+    console.log(e);
+  }
+});
+
 // static
 app.use("/static", express.static(path.join(__dirname, "public")));
 

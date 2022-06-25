@@ -9,6 +9,7 @@ import { clearCart } from "../reducers/products/cartSlice";
 import OrderItemModal from "../components/OrderItemModal";
 import { logout, selectorAuth } from "../reducers/users/authSlice";
 import Loading from "../components/Loading";
+import { motion } from "framer-motion";
 
 export default function MyOrderPage() {
   const [shippingStatus, setShippingStatus] = useState(false);
@@ -44,7 +45,11 @@ export default function MyOrderPage() {
         {loading ? (
           <Loading />
         ) : (
-          <div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             <Table bordered hover responsive="sm">
               <thead>
                 <tr>
@@ -95,7 +100,7 @@ export default function MyOrderPage() {
               </tbody>
             </Table>
             {!orders.length && <h1 className="my-5 text-center">EMPTY.</h1>}
-          </div>
+          </motion.div>
         )}
       </div>
 

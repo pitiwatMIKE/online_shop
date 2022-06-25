@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ConfirmDelete from "../../components/ConfirmDelete";
 import LayoutContent from "../../components/LayoutContent";
-import Loading from "../../components/Loading";
+import LoadTable from "../../components/LoadTable";
 import {
   deleteUser,
   getUsers,
@@ -16,7 +16,7 @@ export default function UserAdmin() {
   const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { values: users } = useSelector(selectorUser);
+  const { loading, values: users } = useSelector(selectorUser);
 
   const deleteHandle = (id) => dispatch(deleteUser(id));
 
@@ -27,8 +27,8 @@ export default function UserAdmin() {
   return (
     <LayoutContent>
       <div className="admin-table-container">
-        {false ? (
-          <Loading />
+        {loading ? (
+          <LoadTable />
         ) : (
           <div>
             <Table bordered hover responsive="sm">

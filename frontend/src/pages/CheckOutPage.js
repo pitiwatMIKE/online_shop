@@ -7,6 +7,7 @@ import Payment from "../components/Payment";
 import { getCard, selectorCart } from "../reducers/products/cartSlice";
 import { selectorAddress } from "../reducers/users/addressSlice";
 import { logout, selectorAuth } from "../reducers/users/authSlice";
+import { motion } from "framer-motion";
 
 export default function CheckOutPage() {
   const navigate = useNavigate();
@@ -39,7 +40,12 @@ export default function CheckOutPage() {
   };
 
   return (
-    <div className="checkout-container">
+    <motion.div
+      className="checkout-container"
+      initial={{ opacity: 0}}
+      animate={{ opacity: 1}}
+      transition={{ duration: 1.5 }}
+    >
       <div className="checkout-step">
         <div>1. SUMMARY</div>
         <div className="checkout-line"></div>
@@ -148,6 +154,6 @@ export default function CheckOutPage() {
         show={cartModalShow}
         onHide={() => setCartModalModalShow(false)}
       />
-    </div>
+    </motion.div>
   );
 }

@@ -1,0 +1,10 @@
+.load-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .spinner-border {
+        margin: 25px 0;
+        width: 100px;
+        height: 100px;
+    }
+}

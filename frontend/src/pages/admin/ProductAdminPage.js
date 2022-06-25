@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ConfirmDelete from "../../components/ConfirmDelete";
 import LayoutContent from "../../components/LayoutContent";
-import Loading from "../../components/Loading";
+import LoadTable from "../../components/LoadTable";
 import Paginate from "../../components/Paginate";
 import {
   deleteProduct,
@@ -39,7 +39,7 @@ export default function ProductAdminPage() {
           CREATE
         </button>
         {loading ? (
-          <Loading />
+          <LoadTable />
         ) : (
           <div>
             <Table bordered hover responsive="sm">

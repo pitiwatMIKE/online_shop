@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setCart } from "../reducers/products/cartSlice";
 import CartModal from "./CartModal";
+import { motion } from "framer-motion";
 
 export default function CardProduct({ id, product }) {
   let clickSelectOp = false;
@@ -11,7 +12,12 @@ export default function CardProduct({ id, product }) {
   const [cartModalShow, setCartModalModalShow] = useState(false);
 
   return (
-    <div className="card-product">
+    <motion.div
+      className="card-product"
+      initial={{ opacity: 0, y: -40 }}
+      animate={{ opacity: 1, y:0 }}
+      transition={{ duration: 0.9 }}
+    >
       <div
         className="image-card"
         onClick={() => !clickSelectOp && navigate(`/product/${id}`)}
@@ -40,6 +46,6 @@ export default function CardProduct({ id, product }) {
         show={cartModalShow}
         onHide={() => setCartModalModalShow(false)}
       />
-    </div>
+    </motion.div>
   );
 }

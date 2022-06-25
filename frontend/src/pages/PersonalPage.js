@@ -5,6 +5,7 @@ import FormAddress from "../components/FormAddress";
 import FormUser from "../components/FormUser";
 import LayoutContent from "../components/LayoutContent";
 import { logout, selectorAuth } from "../reducers/users/authSlice";
+import { motion } from "framer-motion";
 
 export default function PersonalPage() {
   const navigate = useNavigate();
@@ -17,11 +18,15 @@ export default function PersonalPage() {
     }
   }, [dispatch, navigate, userAuth]);
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       <LayoutContent>
         <FormUser />
         <FormAddress />
       </LayoutContent>
-    </>
+    </motion.div>
   );
 }

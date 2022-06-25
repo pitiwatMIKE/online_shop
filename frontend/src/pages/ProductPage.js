@@ -6,6 +6,7 @@ import Error from "../components/Error";
 import Loading from "../components/Loading";
 import { buyNow, setCart } from "../reducers/products/cartSlice";
 import { getProduct, selectorProduct } from "../reducers/products/productSlice";
+import { motion } from "framer-motion";
 
 export default function ProductPage() {
   const [cartModalShow, setCartModalModalShow] = useState(false);
@@ -31,7 +32,11 @@ export default function ProductPage() {
       ) : error ? (
         <Error msg={errMessage} />
       ) : product ? (
-        <>
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9 }}
+        >
           <div className="product-container">
             <div className="show-product">
               <img src={product.imageProduct} alt="product_image" />
@@ -85,7 +90,7 @@ export default function ProductPage() {
             show={cartModalShow}
             onHide={() => setCartModalModalShow(false)}
           />
-        </>
+        </motion.div>
       ) : null}
     </>
   );

@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LayoutContent from "../../components/LayoutContent";
 import OrderItemModal from "../../components/OrderItemModal";
-import Loading from "../../components/Loading";
 import {
   getOrdersShipping,
   selectorOrder,
   sendOrder,
 } from "../../reducers/orders/orderSlice";
 import AddressModal from "../../components/AddressModal";
+import LoadTable from "../../components/LoadTable";
 
 export default function OrderAmindPage() {
   const [shippingStatus, setShippingStatus] = useState(false);
@@ -39,7 +39,7 @@ export default function OrderAmindPage() {
         </button>
 
         {loading ? (
-          <Loading />
+          <LoadTable />
         ) : (
           <div>
             <Table bordered hover responsive="sm">

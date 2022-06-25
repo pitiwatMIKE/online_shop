@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register, selectorAuth } from "../reducers/users/authSlice";
 import Error from "../components/Error";
+import { motion } from "framer-motion";
 
 const initialValues = {
   firstName: "",
@@ -37,7 +38,12 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="form-wrap">
+    <motion.div
+      className="form-wrap"
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7 }}
+    >
       <h2 className="text-center form-title">Welcome to Online Shop</h2>
       {showError && error && <Error msg={errMessage} />}
       <Formik
@@ -125,6 +131,6 @@ export default function SignUpPage() {
           </Form>
         )}
       </Formik>
-    </div>
+    </motion.div>
   );
 }

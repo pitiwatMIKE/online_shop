@@ -34,7 +34,7 @@ export default function AboutPage() {
           </button>
         </div>
 
-        <h1 className="mt-3">User Role</h1>
+        <h1 className="">User Role</h1>
         <hr />
         <Table className="about-table" striped bordered responsive>
           <thead>

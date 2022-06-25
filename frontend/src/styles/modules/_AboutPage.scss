@@ -1,10 +1,9 @@
 .about-container {
 
     .resetdb {
-        position: absolute;
-        right: 30px;
-
         button {
+            margin-top: 10px;
+            margin-left: auto;
             height: 50px;
             color: #ffff;
             border: 1px solid;
@@ -83,6 +82,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+    }
+}
+
+@media only screen and (max-width: $breakpoint-md) {
+    .about-container {
+
+        .about-table {
+            margin: 15px auto;
+        }
+
+        .debit-card {
+            margin: 15px auto;
         }
     }
 }

@@ -42,7 +42,7 @@ const register = asyncHandler(async (req, res) => {
     res.json({
       id: user.id,
       email: user.email,
-      role: user.role,
+      role: "user",
       token: generateToken(user.id),
     });
   } else {
@@ -180,5 +180,5 @@ module.exports = {
   getUsers,
   getUserById,
   update,
-  deleteUser
+  deleteUser,
 };

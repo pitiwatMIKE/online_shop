@@ -6,7 +6,7 @@ const { Product } = require("../db/models");
 // @route   GET /api/products
 // @access  public
 const getProducts = asyncHandler(async (req, res) => {
-  let pageSize = 4;
+  let pageSize = 12;
   let page = req.query.page || 1;
   let keyword = req.query.search || null;
   let condition = keyword ? { name: { [Op.substring]: keyword } } : {};

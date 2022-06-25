@@ -16,7 +16,7 @@ export default function CardProduct({ id, product }) {
         className="image-card"
         onClick={() => !clickSelectOp && navigate(`/product/${id}`)}
       >
-        <img src={product.imageProduct} alt="nice" />
+        <img src={product.imageProduct} alt="product" />
         <div
           className="select-option"
           onClick={() => {
@@ -31,7 +31,7 @@ export default function CardProduct({ id, product }) {
 
       <div className="detail">
         <div className="name-product">
-          <h4>{product.name}</h4>
+          <h4>{product.name?.toUpperCase()}</h4>
         </div>
         <div className="price-product">฿{product.price}</div>
       </div>

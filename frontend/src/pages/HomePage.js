@@ -14,7 +14,7 @@ export default function HomePage() {
   const { values: products } = useSelector(selectorProduct);
 
   useEffect(() => {
-    dispatch(getProductLatest(4));
+    dispatch(getProductLatest(8));
   }, [dispatch]);
 
   return (
@@ -29,7 +29,7 @@ export default function HomePage() {
             {Array.isArray(products) &&
               products.map((item) => (
                 <Col
-                  className="my-4"
+                  className="my-5"
                   key={item.id}
                   xs={6}
                   sm={6}

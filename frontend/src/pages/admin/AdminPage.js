@@ -37,11 +37,6 @@ export default function AdminPage() {
               </NavLink>
             </li>
             <li>
-              <NavLink className={isActive} to="carousel">
-                Carousel
-              </NavLink>
-            </li>
-            <li>
               <NavLink className={isActive} to="user">
                 User
               </NavLink>

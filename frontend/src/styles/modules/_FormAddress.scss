@@ -1,10 +1,8 @@
 .form-address-container {
     margin: 20px auto;
-    width: 900px;
+    max-width: 900px;
     padding: 50px;
     border: 2px solid #000f;
-    // border-radius: 10px;
-    // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
     .form-header {
         display: flex;
@@ -31,7 +29,6 @@
 
 @media only screen and (max-width: $breakpoint-md) {
     .form-address-container {
-        max-width: 730px;
         padding: 20px;
         margin: 20px auto;
     }
@@ -39,8 +36,7 @@
 
 @media only screen and (max-width: $breakpoint-sm) {
     .form-address-container {
-        max-width: 330px;
         box-shadow: none;
-        padding: 0;
+        padding: 10px;
     }
 }

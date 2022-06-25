@@ -42,7 +42,7 @@ export default function Shop() {
               {Array.isArray(products) &&
                 products.map((item) => (
                   <Col
-                    className="my-4"
+                    className="my-5"
                     key={item.id}
                     xs={6}
                     sm={6}

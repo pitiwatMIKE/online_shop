@@ -57,7 +57,7 @@ export const register = (data, navigate) => async (dispatch) => {
     dispatch(success(JSON.parse(localStorage.getItem("userAuth"))));
     navigate("/");
   } catch (e) {
-    dispatch(error(e.reponse.data.message));
+    dispatch(error(e.response.data.message.message));
   }
 };
 

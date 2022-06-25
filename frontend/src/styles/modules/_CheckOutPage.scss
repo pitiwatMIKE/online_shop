@@ -86,8 +86,17 @@
                 width: 15%;
             }
 
-            img {
-                width: 100%;
+            .image {
+                width: 75px;
+                height: 75px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
             }
 
             .name {
@@ -155,7 +164,7 @@
             height: 100px;
         }
 
-        .payment-alert{
+        .payment-alert {
             color: $danger-color;
         }
     }
@@ -216,6 +225,13 @@
     .checkout-container {
         padding: 10px;
 
+        // .form-address-container {
+        //     width: 100%;
+        // }
+        .col-image {
+            text-align: center;
+        }
+
         .checkout-step {
             font-size: 9px;
             margin-top: -20px;
@@ -249,9 +265,10 @@
                 }
             }
 
-            .summary-total{
+            .summary-total {
                 margin-top: 16px;
-                h5{
+
+                h5 {
                     font-size: 14px;
                 }
             }

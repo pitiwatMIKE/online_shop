@@ -62,7 +62,7 @@ export default function CheckOutPage() {
           </div>
           <div className="all-proucts">
             <div className="col-product">
-              <div>Image</div>
+              <div className="col-image">Image</div>
               <div className="col-name">Name</div>
               <div>Price</div>
               <div>Quantity</div>
@@ -80,7 +80,7 @@ export default function CheckOutPage() {
                   <div className="image">
                     <img src={product.imageProduct} alt="image_produt" />
                   </div>
-                  <div className="name">{product.name}</div>
+                  <div className="name">{product.name?.toUpperCase()}</div>
                   <div className="price">฿ {product.price}</div>
                   <div className="qty">{product.qty}</div>
                   <div className="total-price">

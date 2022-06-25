@@ -37,7 +37,7 @@ export default function ProductPage() {
               <img src={product.imageProduct} alt="product_image" />
             </div>
             <div className="product-detail">
-              <h3>{product.name}</h3>
+              <h3>{product.name?.toUpperCase()}</h3>
               <div className="product-price">฿ {product.price}</div>
               <p className="product-description">{product.desc}</p>
               <div className="add-product">

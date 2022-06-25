@@ -23,8 +23,8 @@ export default function OrderItemModal(props) {
       <Modal.Body>
         <div className="order-item-container">
           <div className="column">
-            <div>Image</div>
-            <div>Name</div>
+            <div className="col-image">Image</div>
+            <div className="col-name">Name</div>
             <div>Price</div>
             <div>Quantity</div>
           </div>
@@ -32,10 +32,10 @@ export default function OrderItemModal(props) {
           {orderItems.map((product, index) => (
             <div key={product.id}>
               <div className="table-item">
-                <div>
+                <div className="table-image-product">
                   <img src={product.imageProduct} alt="product_image" />
                 </div>
-                <div>{product.name}</div>
+                <div>{product.name?.toUpperCase()}</div>
                 <div>{product.price}</div>
                 <div>{product.qty}</div>
               </div>

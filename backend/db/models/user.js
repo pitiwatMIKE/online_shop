@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
       hooks: {
         beforeSave: async (user) => {
           const getUser = await User.findByPk(user.id);
-          if (user.password === getUser.password) {
+          if (getUser !== null && user.password === getUser.password) {
             // when update with password === ""
             user.password = getUser.password;
           } else {

@@ -13,7 +13,6 @@ import CheckOutPage from "./pages/CheckOutPage";
 import MyOrderPage from "./pages/MyOrderPage";
 import AdminPage from "./pages/admin/AdminPage";
 import OrderAmindPage from "./pages/admin/OrderAmindPage";
-import CarouselAdminPage from "./pages/admin/CarouselAdminPage";
 import ProductAdminPage from "./pages/admin/ProductAdminPage";
 import UserAdmin from "./pages/admin/UserAdmin";
 import CreateProductPage from "./pages/admin/CreateProductPage";
@@ -49,7 +48,6 @@ export default function App() {
             <Route path="product/page/:page" element={<ProductAdminPage />} />
             <Route path="user" element={<UserAdmin />} />
             <Route path="user/update/:id" element={<UpdaetUserPage />} />
-            <Route path="carousel" element={<CarouselAdminPage />} />
           </Route>
         </Routes>
       </LayoutContainer>

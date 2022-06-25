@@ -15,14 +15,14 @@ let date = { createdAt: new Date(), updatedAt: new Date() };
 const data = [
   {
     ...date,
-    email: "mike@gmail.com",
+    email: "user@gmail.com",
     firstName: "pitiwat",
     lastName: "promnimit",
-    address: "135 m.3 uon pua",
-    city: "pua",
-    province: "nan",
-    postalCode: "55120",
-    phone: "1234567890",
-    userId: 1,
+    address: "64/19 m.1 Subsumboon apartment",
+    city: "Mueang",
+    province: "Chiang Mai",
+    postalCode: "50300",
+    phone: "0873451287",
+    userId: 2,
   },
 ];

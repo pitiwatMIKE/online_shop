@@ -60,7 +60,7 @@ export default function ProductAdminPage() {
                       <td className="image-table">
                         <img src={product.imageProduct} alt="image_product" />
                       </td>
-                      <td>{product.name}</td>
+                      <td>{product.name?.toUpperCase()}</td>
                       <td>฿ {product.price}</td>
                       <td>
                         <Link to={`/product/${product.id}`}>Detail</Link>
@@ -91,6 +91,13 @@ export default function ProductAdminPage() {
               </tbody>
             </Table>
             {!true && <h1 className="my-5 text-center">EMPTY.</h1>}
+
+            <div
+              className="my-5"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <Paginate count={2} page={page} maxPage={maxPage} />
+            </div>
           </div>
         )}
       </div>
@@ -101,13 +108,6 @@ export default function ProductAdminPage() {
         deleteId={productId}
         deleteHandle={deleteHandle}
       />
-
-      <div
-        className="my-5"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        <Paginate count={2} page={page} maxPage={maxPage} />
-      </div>
     </LayoutContent>
   );
 }

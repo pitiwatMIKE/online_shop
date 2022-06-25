@@ -12,9 +12,8 @@
     background-color: #f6f6f6;
 
     img {
-        width: 500px;
-        object-fit: cover;
-        object-position: center;
+        max-width: 50%;
+        max-height: 50%;
     }
 }
 
@@ -74,6 +73,12 @@
 
         .show-product {
             width: 100%;
+            height: 400px;
+
+            img {
+                max-width: 80%;
+                max-height: 80%;
+            }
         }
 
         .product-detail {
@@ -86,12 +91,6 @@
 
 @media only screen and (max-width: $breakpoint-sm) {
     .product-container {
-        .show-product {
-            img {
-                width: 100%;
-            }
-        }
-
         .product-detail {
             padding: 20px
         }

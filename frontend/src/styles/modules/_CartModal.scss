@@ -6,8 +6,18 @@
         align-items: center;
         grid-gap: 20px;
 
-        img {
-            width: 74px;
+        .product-image {
+            width: 75px;
+            height: 75px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                max-height: 100%;
+                max-width: 100%;
+            }
+
         }
 
         .product-name {
@@ -97,10 +107,6 @@
         .product-cart {
             flex-wrap: wrap;
             grid-gap: 15px 10px;
-
-            img {
-                width: 30%;
-            }
 
             .product-name {
                 font-size: 22px;

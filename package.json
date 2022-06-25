@@ -4,6 +4,7 @@
   "description": "workshop online shop",
   "main": "index.js",
   "scripts": {
+    "prod": "NODE_ENV=production node backend",
     "backend": "nodemon backend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
@@ -19,12 +20,14 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
-    "mysql2": "^2.3.3",
     "omise": "^0.8.5",
-    "sequelize": "^6.20.1"
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.20.1",
+    "sequelize-cli": "^6.4.1"
   },
   "devDependencies": {
     "concurrently": "^7.2.1",
-    "sequelize-cli": "^6.4.1"
+    "mysql2": "^2.3.3"
   }
 }

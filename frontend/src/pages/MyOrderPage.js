@@ -8,8 +8,8 @@ import { getOrders, selectorOrder } from "../reducers/orders/orderSlice";
 import { clearCart } from "../reducers/products/cartSlice";
 import OrderItemModal from "../components/OrderItemModal";
 import { logout, selectorAuth } from "../reducers/users/authSlice";
-import Loading from "../components/Loading";
 import { motion } from "framer-motion";
+import LoadTable from "../components/LoadTable";
 
 export default function MyOrderPage() {
   const [shippingStatus, setShippingStatus] = useState(false);
@@ -43,7 +43,7 @@ export default function MyOrderPage() {
         </button>
 
         {loading ? (
-          <Loading />
+          <LoadTable />
         ) : (
           <motion.div
             initial={{ opacity: 0 }}
